@@ -1,6 +1,6 @@
-name = "meta-ads-api"
+name = "meta-ads-worker"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 
 [vars]
-META_AD_ACCOUNT_ID = ""
+META_AD_ACCOUNT_ID = "act_1833510890685857"
