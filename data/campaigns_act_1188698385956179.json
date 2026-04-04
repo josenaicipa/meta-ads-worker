@@ -8,10 +8,10 @@
   "period": "last_7d",
   "level": "adset",
   "summary": {
-    "total_spend": 1523.61,
+    "total_spend": 1523.62,
     "total_purchases": 1,
     "total_revenue_estimated": 2900,
-    "avg_cpa": 1523.61,
+    "avg_cpa": 1523.62,
     "avg_roas": 1.9
   },
   "campaigns": [
@@ -53,7 +53,7 @@
       "objective": "OUTCOME_LEADS",
       "daily_budget": 90,
       "lifetime_budget": null,
-      "budget_remaining": 37.43
+      "budget_remaining": 30.51
     },
     {
       "name": "Clientes potenciales | Programar | Black Friday | Master ABO | US | VSL | 27 Nov",
@@ -346,14 +346,14 @@
       "campaign_id": "120242443135100036",
       "adset_name": "Programar | 1DC | CO | 180 Dias | Exclu  90-10 Programar | 6 -8 | 5 Marzo",
       "adset_id": "120242443135250036",
-      "spend": 273.24,
-      "impressions": 44138,
+      "spend": 273.25,
+      "impressions": 44141,
       "reach": 20977,
-      "clicks": 695,
-      "cpm": 6.190584,
-      "cpc": 0.393151,
-      "ctr": 1.574607,
-      "frequency": 2.104114,
+      "clicks": 697,
+      "cpm": 6.19039,
+      "cpc": 0.392037,
+      "ctr": 1.579031,
+      "frequency": 2.104257,
       "purchases": 0,
       "leads": 13,
       "initiate_checkout": 0,
