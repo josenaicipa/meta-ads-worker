@@ -19,6 +19,7 @@ export default {
     if (request.method === 'GET') {
       if (path === '/campaigns') return handleCampaigns(url, token, env.META_AD_ACCOUNT_ID);
       if (path === '/accounts') return handleAllAccounts(url, token);
+      if (path === '/daily') return handleDaily(url, token, env.META_AD_ACCOUNT_ID);
     }
 
     return json({ error: 'Not found. Use GET /campaigns or GET /accounts' }, 404);
@@ -84,6 +85,67 @@ async function handleCampaigns(url, token, defaultAccountId) {
     });
   } catch (err) {
     return json({ error: err.message || 'Error fetching campaign data' }, 500);
+  }
+}
+
+async function handleDaily(url, token, defaultAccountId) {
+  const datePreset = url.searchParams.get('date_preset') || 'last_7d';
+  const level = url.searchParams.get('level') || 'campaign';
+  const accountId = url.searchParams.get('account_id') || defaultAccountId;
+
+  if (!accountId) return json({ error: 'No account_id provided.' }, 400);
+
+  try {
+    const accountInfo = await metaGet(`${accountId}`, {
+      fields: 'name,account_status,currency',
+    }, token);
+
+    const insights = await metaGet(`${accountId}/insights`, {
+      fields: 'campaign_name,campaign_id,adset_name,adset_id,impressions,clicks,spend,cpm,cpc,ctr,actions,cost_per_action_type,purchase_roas,reach,frequency',
+      date_preset: datePreset,
+      level,
+      time_increment: '1',
+      limit: '200',
+      sort: 'date_start_ascending',
+    }, token);
+
+    const rows = (insights.data || []).map(row => ({
+      date: row.date_start,
+      ...parseInsightRow(row),
+    }));
+
+    const byDate = {};
+    for (const row of rows) {
+      if (!byDate[row.date]) {
+        byDate[row.date] = { date: row.date, spend: 0, impressions: 0, clicks: 0, purchases: 0, leads: 0, initiate_checkout: 0, revenue: 0, details: [] };
+      }
+      const d = byDate[row.date];
+      d.spend += row.spend;
+      d.impressions += row.impressions;
+      d.clicks += row.clicks;
+      d.purchases += row.purchases;
+      d.leads += row.leads;
+      d.initiate_checkout += row.initiate_checkout;
+      d.revenue += row.spend * row.roas;
+      d.details.push(row);
+    }
+
+    const daily = Object.values(byDate).map(d => ({
+      ...d,
+      spend: round2(d.spend),
+      revenue: round2(d.revenue),
+      cpa: d.purchases > 0 ? round2(d.spend / d.purchases) : null,
+      roas: d.spend > 0 ? round2(d.revenue / d.spend) : null,
+    }));
+
+    return json({
+      account: { id: accountId, name: accountInfo.name },
+      period: datePreset,
+      level,
+      daily,
+    });
+  } catch (err) {
+    return json({ error: err.message || 'Error fetching daily data' }, 500);
   }
 }
 

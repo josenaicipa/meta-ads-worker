@@ -32,6 +32,16 @@ jobs:
               -o "data/campaigns_${acct}.json"
           done
 
+      - name: Fetch daily breakdown per account
+        run: |
+          ACCOUNTS=$(cat data/accounts.json | jq -r '.accounts[] | select(.spend > 0) | .id')
+          for acct in $ACCOUNTS; do
+            echo "Fetching daily for $acct..."
+            curl -s -H "x-api-secret: ${{ secrets.META_API_SECRET }}" \
+              "${{ secrets.WORKER_URL }}/daily?account_id=${acct}&date_preset=last_7d&level=adset" \
+              -o "data/daily_${acct}.json"
+          done
+
       - name: Add timestamp
         run: |
           echo "{\"last_updated\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" > data/meta.json
