@@ -1,0 +1,41 @@
+name: Sync Meta Ads Data
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'  # cada 3 horas
+  workflow_dispatch: {}     # trigger manual
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch all accounts summary
+        run: |
+          mkdir -p data
+          curl -s -H "x-api-secret: ${{ secrets.META_API_SECRET }}" \
+            "${{ secrets.WORKER_URL }}/accounts?date_preset=last_7d" \
+            -o data/accounts.json
+
+      - name: Fetch campaigns per account
+        run: |
+          ACCOUNTS=$(cat data/accounts.json | jq -r '.accounts[] | select(.spend > 0) | .id')
+          echo '{}' > data/campaigns_all.json
+          for acct in $ACCOUNTS; do
+            echo "Fetching campaigns for $acct..."
+            curl -s -H "x-api-secret: ${{ secrets.META_API_SECRET }}" \
+              "${{ secrets.WORKER_URL }}/campaigns?account_id=${acct}&date_preset=last_7d&level=adset" \
+              -o "data/campaigns_${acct}.json"
+          done
+
+      - name: Add timestamp
+        run: |
+          echo "{\"last_updated\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" > data/meta.json
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet || (git commit -m "Update Meta Ads data $(date -u +%Y-%m-%d_%H:%M)" && git push)
