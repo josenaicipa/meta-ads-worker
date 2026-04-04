@@ -1,0 +1,141 @@
+{
+  "account": {
+    "id": "act_1833510890685857",
+    "name": "Academia Unlocked",
+    "status": "ACTIVE",
+    "currency": "USD"
+  },
+  "period": "last_7d",
+  "level": "adset",
+  "summary": {
+    "total_spend": 803.28,
+    "total_purchases": 15,
+    "total_revenue_estimated": 405.54,
+    "avg_cpa": 53.55,
+    "avg_roas": 0.5
+  },
+  "campaigns": [
+    {
+      "name": "CPAcademia | PixelSuscrip | Ventas | Master ABO | Empizadropoptotal | 21 Marzo",
+      "status": "ACTIVE",
+      "objective": "OUTCOME_SALES",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "CPAcademia | PixelSuscrip | Ventas | Master ABO | Droptotal | 18 Marzo",
+      "status": "PAUSED",
+      "objective": "OUTCOME_SALES",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "CPAcademia | PixelSuscrip | Landing Curso. | Ventas | Master ABO | Droptotal | 11 Marzo",
+      "status": "PAUSED",
+      "objective": "OUTCOME_SALES",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "CPAcademia | PixelSuscrip | Ventas | Master ABO | Droptotal | 18 Feb",
+      "status": "PAUSED",
+      "objective": "OUTCOME_SALES",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Leads | Lanzamiento Enero 2026 Master ABO | CO | VSL | 19 Enero",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    }
+  ],
+  "insights": [
+    {
+      "campaign_name": "CPAcademia | PixelSuscrip | Ventas | Master ABO | Empizadropoptotal | 21 Marzo",
+      "campaign_id": "120241959986740335",
+      "adset_name": "USuscri | C | CO | Abierto | 22 marzo",
+      "adset_id": "120241959986730335",
+      "spend": 343.71,
+      "impressions": 35484,
+      "reach": 12803,
+      "clicks": 658,
+      "cpm": 9.686338,
+      "cpc": 0.522356,
+      "ctr": 1.854357,
+      "frequency": 2.771538,
+      "purchases": 8,
+      "leads": 0,
+      "initiate_checkout": 41,
+      "add_to_cart": 0,
+      "cost_per_purchase": 42.96375,
+      "roas": 0.601205
+    },
+    {
+      "campaign_name": "CPAcademia | PixelSuscrip | Ventas | Master ABO | Empizadropoptotal | 21 Marzo",
+      "campaign_id": "120241959986740335",
+      "adset_name": "USuscri | C | CO | Abierto | Alejandro | 28 marzo",
+      "adset_id": "120242338206080335",
+      "spend": 331.49,
+      "impressions": 37671,
+      "reach": 9426,
+      "clicks": 613,
+      "cpm": 8.799607,
+      "cpc": 0.540767,
+      "ctr": 1.627246,
+      "frequency": 3.996499,
+      "purchases": 6,
+      "leads": 1,
+      "initiate_checkout": 17,
+      "add_to_cart": 0,
+      "cost_per_purchase": 55.248333,
+      "roas": 0.488703
+    },
+    {
+      "campaign_name": "CPAcademia | PixelSuscrip | Ventas | Master ABO | Droptotal | 18 Marzo",
+      "campaign_id": "120241771420940335",
+      "adset_name": "USuscri | C | CO | Abierto | 3 marzo",
+      "adset_id": "120241771421010335",
+      "spend": 73.38,
+      "impressions": 7169,
+      "reach": 4648,
+      "clicks": 146,
+      "cpm": 10.235737,
+      "cpc": 0.502603,
+      "ctr": 2.036546,
+      "frequency": 1.542384,
+      "purchases": 1,
+      "leads": 0,
+      "initiate_checkout": 3,
+      "add_to_cart": 0,
+      "cost_per_purchase": 73.38,
+      "roas": 0.502862
+    },
+    {
+      "campaign_name": "CPAcademia | PixelSuscrip | Ventas | Master ABO | Empizadropoptotal | 21 Marzo",
+      "campaign_id": "120241959986740335",
+      "adset_name": "USuscri | C | CO | Abierto | 2 Abril",
+      "adset_id": "120242659116520335",
+      "spend": 54.7,
+      "impressions": 7593,
+      "reach": 4473,
+      "clicks": 123,
+      "cpm": 7.204004,
+      "cpc": 0.444715,
+      "ctr": 1.619913,
+      "frequency": 1.697518,
+      "purchases": 0,
+      "leads": 0,
+      "initiate_checkout": 12,
+      "add_to_cart": 0,
+      "cost_per_purchase": 0,
+      "roas": 0
+    }
+  ]
+}

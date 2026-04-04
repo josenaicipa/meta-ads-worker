@@ -1,0 +1,101 @@
+{
+  "period": "last_7d",
+  "total_accounts": 8,
+  "summary": {
+    "total_spend": 5508.76,
+    "total_purchases": 17,
+    "total_revenue_estimated": 7305.54,
+    "avg_cpa": 324.04,
+    "avg_roas": 1.33
+  },
+  "accounts": [
+    {
+      "id": "act_924217625292241",
+      "name": "Cycle Surprises",
+      "status": "ACTIVE",
+      "currency": "USD",
+      "spend": 0,
+      "impressions": 0,
+      "purchases": 0,
+      "cpa": null,
+      "roas": 0
+    },
+    {
+      "id": "act_837535745149957",
+      "name": "Unlocked Academy",
+      "status": "ACTIVE",
+      "currency": "USD",
+      "spend": 1426.18,
+      "impressions": 385640,
+      "purchases": 1,
+      "cpa": 1426.18,
+      "roas": 2.8
+    },
+    {
+      "id": "act_1188698385956179",
+      "name": "Unlocked 2",
+      "status": "ACTIVE",
+      "currency": "USD",
+      "spend": 1523.57,
+      "impressions": 154248,
+      "purchases": 1,
+      "cpa": 1523.57,
+      "roas": 1.9
+    },
+    {
+      "id": "act_1326515245073322",
+      "name": "Unlocked 4 ",
+      "status": "ACTIVE",
+      "currency": "USD",
+      "spend": 437.3,
+      "impressions": 32820,
+      "purchases": 0,
+      "cpa": null,
+      "roas": 0
+    },
+    {
+      "id": "act_1193318015585839",
+      "name": "Unlocked 3",
+      "status": "ACTIVE",
+      "currency": "USD",
+      "spend": 1318.43,
+      "impressions": 48832,
+      "purchases": 0,
+      "cpa": null,
+      "roas": 0
+    },
+    {
+      "id": "act_1358549732981727",
+      "name": "Unlocked MX",
+      "status": "ACTIVE",
+      "currency": "USD",
+      "spend": 0,
+      "impressions": 0,
+      "purchases": 0,
+      "cpa": null,
+      "roas": 0
+    },
+    {
+      "id": "act_1833510890685857",
+      "name": "Academia Unlocked",
+      "status": "ACTIVE",
+      "currency": "USD",
+      "spend": 803.28,
+      "impressions": 87917,
+      "purchases": 15,
+      "cpa": 53.55,
+      "roas": 0.5
+    },
+    {
+      "id": "act_790295570757526",
+      "name": "Unlocked US",
+      "status": "ACTIVE",
+      "currency": "USD",
+      "spend": 0,
+      "impressions": 0,
+      "purchases": 0,
+      "cpa": null,
+      "roas": 0
+    }
+  ]
+}

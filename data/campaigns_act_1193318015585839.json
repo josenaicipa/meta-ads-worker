@@ -1,0 +1,145 @@
+{
+  "account": {
+    "id": "act_1193318015585839",
+    "name": "Unlocked 3",
+    "status": "ACTIVE",
+    "currency": "USD"
+  },
+  "period": "last_7d",
+  "level": "adset",
+  "summary": {
+    "total_spend": 1318.43,
+    "total_purchases": 0,
+    "total_revenue_estimated": 0,
+    "avg_cpa": null,
+    "avg_roas": 0
+  },
+  "campaigns": [
+    {
+      "name": "UA3 | CP | Pixel 1 | Master | Version 1 | VSL | 18 Marzo | Activar",
+      "status": "ACTIVE",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "UA3 | CP | Pixel 1 | Master | Iteraciones | VSL | 15 Marzo | Activar",
+      "status": "ACTIVE",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "UA3 | CP | Pixel 1 | Master  | VSL | 28 Enero | Activar",
+      "status": "ACTIVE",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "UA3 | CP | Pixel 1 | Master CBO | Mentoria | VSL | 16 Oct",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": 50,
+      "lifetime_budget": null,
+      "budget_remaining": 50
+    },
+    {
+      "name": "Prospecting | Master | Mentoria | Lanzamiento Beemo | 8 Oct",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Prospecting | Master | Mentoria | Lanzamiento Beemo | 7 Oct",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Prospecting | Master | Mentoria | VSL | 16 Junio",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Prospecting | Master | Mentoria | VSL | 26 Mayo",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    }
+  ],
+  "insights": [
+    {
+      "campaign_name": "UA3 | CP | Pixel 1 | Master  | VSL | 28 Enero | Activar",
+      "campaign_id": "120239616916680373",
+      "adset_name": "Abierto | Programar | 1DC | CO | Exclu IG Jose| 6 -8 | 15 Enero - Copia",
+      "adset_id": "120239616916720373",
+      "spend": 562.11,
+      "impressions": 16022,
+      "reach": 8426,
+      "clicks": 2032,
+      "cpm": 35.083635,
+      "cpc": 0.276629,
+      "ctr": 12.682561,
+      "frequency": 1.901495,
+      "purchases": 0,
+      "leads": 91,
+      "initiate_checkout": 0,
+      "add_to_cart": 0,
+      "cost_per_purchase": 0,
+      "roas": 0
+    },
+    {
+      "campaign_name": "UA3 | CP | Pixel 1 | Master | Version 1 | VSL | 18 Marzo | Activar",
+      "campaign_id": "120241858871830373",
+      "adset_name": "Abierto | Programar | 1DC | CO | Exclu IG Jose| 1 -9 AD |  18 Marzo",
+      "adset_id": "120241858871840373",
+      "spend": 480.36,
+      "impressions": 17000,
+      "reach": 9477,
+      "clicks": 2083,
+      "cpm": 28.256471,
+      "cpc": 0.23061,
+      "ctr": 12.252941,
+      "frequency": 1.793817,
+      "purchases": 0,
+      "leads": 70,
+      "initiate_checkout": 0,
+      "add_to_cart": 0,
+      "cost_per_purchase": 0,
+      "roas": 0
+    },
+    {
+      "campaign_name": "UA3 | CP | Pixel 1 | Master | Iteraciones | VSL | 15 Marzo | Activar",
+      "campaign_id": "120241726254480373",
+      "adset_name": "Abierto | Programar | 1DC | CO | Exclu IG Jose| 6 -8 |  15 Marzo",
+      "adset_id": "120241726254600373",
+      "spend": 275.96,
+      "impressions": 15810,
+      "reach": 9856,
+      "clicks": 1508,
+      "cpm": 17.454775,
+      "cpc": 0.182997,
+      "ctr": 9.538267,
+      "frequency": 1.604099,
+      "purchases": 0,
+      "leads": 33,
+      "initiate_checkout": 0,
+      "add_to_cart": 0,
+      "cost_per_purchase": 0,
+      "roas": 0
+    }
+  ]
+}

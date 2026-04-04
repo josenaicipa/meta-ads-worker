@@ -1,0 +1,429 @@
+{
+  "account": {
+    "id": "act_837535745149957",
+    "name": "Unlocked Academy",
+    "status": "ACTIVE",
+    "currency": "USD"
+  },
+  "period": "last_7d",
+  "level": "adset",
+  "summary": {
+    "total_spend": 1426.18,
+    "total_purchases": 1,
+    "total_revenue_estimated": 4000,
+    "avg_cpa": 1426.18,
+    "avg_roas": 2.8
+  },
+  "campaigns": [
+    {
+      "name": "Trafico IG Colab | 4 Feb",
+      "status": "ACTIVE",
+      "objective": "OUTCOME_TRAFFIC",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "UA | CP | Pixel 1 | Imagenes | Abierto | VSL | 28 Enero",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": 80,
+      "lifetime_budget": null,
+      "budget_remaining": 80
+    },
+    {
+      "name": "UA | CP | Pixel 1 | RM | Programar | Master  | VSL | 15 Enero | Activar",
+      "status": "ACTIVE",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Academia | UGC Videos | Master ABO | 11 Enero",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Clientes potenciales | Programar | Master | Black FRIDAY VSL | 16 Nov",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Clientes potenciales | Programar | Imagenes | Master | VSL | 5 Nov",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Clientes potenciales | Programar | Master | VSL | 20 Sept",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "UA | CP | Pixel 1 | Ads: 4 Videos | Intereses Ganadores de Raiz | VSL | 22 Julio (Ultimos ads)",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Clientes potenciales | Programar | Master | VSL | 12 Agosto",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Clientes potenciales | Programar | Ads: 4 Videos | Intereses Ganadores de Raiz | VSL | 22 Julio (Ultimos ads)",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Tráfico al Perfil | Nuevos Anuncios  - 18 Julio",
+      "status": "PAUSED",
+      "objective": "OUTCOME_TRAFFIC",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "ABO Test | Testimonio Keyner (Variaciones) - 18 JuLio",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Prueba: Clientes potenciales | Programar | Ads: 4 Videos | Intereses Ganadores de Raiz | VSL | 12 Julio",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": 56.56,
+      "lifetime_budget": null,
+      "budget_remaining": 56.56
+    },
+    {
+      "name": "Clientes potenciales | Programar | Ads: 4 Videos | Intereses Ganadores de Raiz | VSL | 12 Julio",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "CBO Test | Testimonio Keyner (Variaciones) - 17 Junio",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": 40,
+      "lifetime_budget": null,
+      "budget_remaining": 40
+    },
+    {
+      "name": "Tráfico al Perfil | Nuevos Creativos | 09 Junio",
+      "status": "PAUSED",
+      "objective": "OUTCOME_TRAFFIC",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Testeo Audiencias 1x5x3 - 3 Videos(Abril) / CO [18 Mayo]",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Programar[CP] | CO | Shopify Woo Triangulacion | Testimonio Ilbert(solo) - 29 Abril",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Clientes Potenciales[Programar] - Test ADS 6Vid / (LAL,1-10%) [DL] 23 Abril",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "(Embudo de 2 Pasos) Test Embudo - Cliente Potencial | [Best Creativos] - 4 Abril [DL]",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Clientes Potenciales FLDA (ADV+Intereses) Test Que costo tiene hasta md? [Best Creativos] - 4 Abril [DL]",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Clientes Potenciales EEUU | Test [Best Creativos] - 2 Abril [DL] - [Duplicado 1]",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Clientes Potenciales EEUU | Test [Best Creativos] - 2 Abril [DL]",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Clientes Poteciales / VSL 6 ADS - 13 MAR [DL]",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Visitas IG / REM[+Seguidores]/Variacion 1 /  04 Marz [DL]",
+      "status": "PAUSED",
+      "objective": "OUTCOME_TRAFFIC",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "[DL] Clientes Poteciales / VSL 3 ADS - 20 FEB",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Clientes potenciales | 4 Videos Testi | VSL | 17 Enero",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "UA | CP | Pixel 1 | 3 Videos | VSL | 4 Enero",
+      "status": "ACTIVE",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Trafico | Perfil IG Jose | 19 dic",
+      "status": "PAUSED",
+      "objective": "OUTCOME_TRAFFIC",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Clientes potenciales | 5+Videos | VSL | 19 Dic",
+      "status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Conversaciones | Ventas | Consultoria | Jose Ads 3 y 5 | 27 Nov",
+      "status": "PAUSED",
+      "objective": "OUTCOME_SALES",
+      "daily_budget": 18,
+      "lifetime_budget": null,
+      "budget_remaining": 18
+    },
+    {
+      "name": "Conversaciones | Ventas | Consultoria | Jose Ads 4 y 6 | 22 Nov - Copia",
+      "status": "PAUSED",
+      "objective": "OUTCOME_SALES",
+      "daily_budget": 10,
+      "lifetime_budget": null,
+      "budget_remaining": 10
+    },
+    {
+      "name": "Conversaciones | Ventas | Consultoria | Jose Ads 4 y 6 | 22 Nov",
+      "status": "PAUSED",
+      "objective": "OUTCOME_SALES",
+      "daily_budget": 8,
+      "lifetime_budget": null,
+      "budget_remaining": 8
+    },
+    {
+      "name": "Conversaciones | Interaccion | Chile | Consultoria | Jose Ads | 13 Nov",
+      "status": "PAUSED",
+      "objective": "OUTCOME_ENGAGEMENT",
+      "daily_budget": 10,
+      "lifetime_budget": null,
+      "budget_remaining": 10
+    },
+    {
+      "name": "Conversaciones | Interaccion | US | Consultoria | Jose Ads | 4 Nov - Copia",
+      "status": "PAUSED",
+      "objective": "OUTCOME_ENGAGEMENT",
+      "daily_budget": 15,
+      "lifetime_budget": null,
+      "budget_remaining": 15
+    },
+    {
+      "name": "Conversaciones | Interaccion | MX | Consultoria | Jose Ads | 4 Nov",
+      "status": "PAUSED",
+      "objective": "OUTCOME_ENGAGEMENT",
+      "daily_budget": 10,
+      "lifetime_budget": null,
+      "budget_remaining": 10
+    },
+    {
+      "name": "Conversaciones | Interaccion | Consultoria | Jose Ads Version 2 | 22 Oct",
+      "status": "PAUSED",
+      "objective": "OUTCOME_ENGAGEMENT",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Conversaciones | Interaccion | Consultoria | Jose Ads | 10 Oct 2 - Copia",
+      "status": "PAUSED",
+      "objective": "OUTCOME_ENGAGEMENT",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Conversaciones | Interaccion | Consultoria | Jose Ads | 10 Oct 2",
+      "status": "PAUSED",
+      "objective": "OUTCOME_ENGAGEMENT",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Conversaciones | Consultoria | Jose Ads | 10 Oct 2",
+      "status": "PAUSED",
+      "objective": "OUTCOME_SALES",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    },
+    {
+      "name": "Trafico | Perfil IG Jose | 11 Sept",
+      "status": "PAUSED",
+      "objective": "OUTCOME_TRAFFIC",
+      "daily_budget": null,
+      "lifetime_budget": null,
+      "budget_remaining": 0
+    }
+  ],
+  "insights": [
+    {
+      "campaign_name": "UA | CP | Pixel 1 | RM | Programar | Master  | VSL | 15 Enero | Activar",
+      "campaign_id": "120237440904800406",
+      "adset_name": "Abierto | Programar | 1DC | CO | Exclu IG Jose| 6 -8 | 15 Enero",
+      "adset_id": "120237440904790406",
+      "spend": 556.72,
+      "impressions": 87729,
+      "reach": 24469,
+      "clicks": 1845,
+      "cpm": 6.345906,
+      "cpc": 0.301745,
+      "ctr": 2.103067,
+      "frequency": 3.585312,
+      "purchases": 1,
+      "leads": 18,
+      "initiate_checkout": 0,
+      "add_to_cart": 0,
+      "cost_per_purchase": 556.72,
+      "roas": 7.18494
+    },
+    {
+      "campaign_name": "UA | CP | Pixel 1 | 3 Videos | VSL | 4 Enero",
+      "campaign_id": "120213899162560406",
+      "adset_name": "Programar | CO | 16 | Shopify Woo Triangulacion | 4 Enero [Vid 3-2,1-2,2-1]",
+      "adset_id": "120213899162620406",
+      "spend": 498.21,
+      "impressions": 71210,
+      "reach": 39443,
+      "clicks": 2433,
+      "cpm": 6.996349,
+      "cpc": 0.204772,
+      "ctr": 3.416655,
+      "frequency": 1.80539,
+      "purchases": 0,
+      "leads": 82,
+      "initiate_checkout": 0,
+      "add_to_cart": 0,
+      "cost_per_purchase": 0,
+      "roas": 0
+    },
+    {
+      "campaign_name": "UA | CP | Pixel 1 | Ads: 4 Videos | Intereses Ganadores de Raiz | VSL | 22 Julio (Ultimos ads)",
+      "campaign_id": "120231560033400406",
+      "adset_name": "Abierto | Programar | CO | Shopify Woo Triangulacion | 11 Julio [Vid 01,02,03,04] - 11 Julio [D]",
+      "adset_id": "120231560033460406",
+      "spend": 232.34,
+      "impressions": 16056,
+      "reach": 10519,
+      "clicks": 1920,
+      "cpm": 14.470603,
+      "cpc": 0.12101,
+      "ctr": 11.958146,
+      "frequency": 1.526381,
+      "purchases": 0,
+      "leads": 38,
+      "initiate_checkout": 0,
+      "add_to_cart": 0,
+      "cost_per_purchase": 0,
+      "roas": 0
+    },
+    {
+      "campaign_name": "Trafico IG Colab | 4 Feb",
+      "campaign_id": "120238053847210406",
+      "adset_name": "IG Jose Trafico | 4 Feb",
+      "adset_id": "120238053847220406",
+      "spend": 138.91,
+      "impressions": 210645,
+      "reach": 149781,
+      "clicks": 3170,
+      "cpm": 0.659451,
+      "cpc": 0.04382,
+      "ctr": 1.504902,
+      "frequency": 1.406353,
+      "purchases": 0,
+      "leads": 0,
+      "initiate_checkout": 0,
+      "add_to_cart": 0,
+      "cost_per_purchase": 0,
+      "roas": 0
+    }
+  ]
+}
