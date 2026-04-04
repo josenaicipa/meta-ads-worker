@@ -8,6 +8,17 @@ export default {
 
     if (request.method === 'OPTIONS') return corsOk();
 
+    // Debug endpoint - REMOVE after testing
+    if (path === '/debug') {
+      return json({
+        has_secret_env: !!env.META_API_SECRET,
+        has_token_env: !!env.META_ACCESS_TOKEN,
+        has_account_env: !!env.META_AD_ACCOUNT_ID,
+        header_received: request.headers.get('x-api-secret'),
+        env_keys: Object.keys(env),
+      });
+    }
+
     const secret = request.headers.get('x-api-secret');
     if (!env.META_API_SECRET || secret !== env.META_API_SECRET) {
       return json({ error: 'Unauthorized' }, 401);
