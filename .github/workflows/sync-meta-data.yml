@@ -1,6 +1,9 @@
 name: Sync Meta Ads Data
 
 on:
+  push:
+    branches: [main]
+    paths: ['worker.js', 'wrangler.toml']
   schedule:
     - cron: '0 */3 * * *'  # cada 3 horas
   workflow_dispatch: {}     # trigger manual
@@ -9,7 +12,17 @@ permissions:
   contents: write
 
 jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare deploy
+        run: |
+          curl -s -X POST "${{ secrets.CF_DEPLOY_HOOK }}" || true
+      - name: Wait for deploy
+        run: sleep 30
+
   sync:
+    needs: deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
