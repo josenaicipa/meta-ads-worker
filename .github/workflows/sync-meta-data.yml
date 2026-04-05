@@ -3,7 +3,7 @@ name: Sync Meta Ads Data
 on:
   push:
     branches: [main]
-    paths: ['worker.js', 'wrangler.toml']
+    paths: ['worker.js', 'wrangler.toml', '.github/workflows/**']
   schedule:
     - cron: '0 */3 * * *'  # cada 3 horas
   workflow_dispatch: {}     # trigger manual
