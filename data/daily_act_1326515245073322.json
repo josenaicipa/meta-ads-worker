@@ -302,8 +302,8 @@
     },
     {
       "date": "2026-04-08",
-      "spend": 115.07,
-      "impressions": 13415,
+      "spend": 115.36,
+      "impressions": 13448,
       "clicks": 594,
       "purchases": 2,
       "leads": 15,
@@ -316,20 +316,20 @@
           "campaign_id": "120245470534520119",
           "adset_name": "Testimonios | Programar | CO | Exclu Leads 180 - Abierto | 15 Marzo",
           "adset_id": "120245470534550119",
-          "spend": 57.95,
-          "impressions": 5001,
-          "reach": 3677,
+          "spend": 58.11,
+          "impressions": 5013,
+          "reach": 3678,
           "clicks": 224,
-          "cpm": 11.587682,
-          "cpc": 0.258705,
-          "ctr": 4.479104,
-          "frequency": 1.360076,
+          "cpm": 11.591861,
+          "cpc": 0.25942,
+          "ctr": 4.468382,
+          "frequency": 1.362969,
           "purchases": 2,
           "leads": 4,
           "initiate_checkout": 0,
           "add_to_cart": 0,
-          "cost_per_purchase": 28.975,
-          "roas": 100.086281
+          "cost_per_purchase": 29.055,
+          "roas": 99.810704
         },
         {
           "date": "2026-04-08",
@@ -337,14 +337,14 @@
           "campaign_id": "120245470534520119",
           "adset_name": "Testimonios Santiago| Programar | CO | Exclu Leads 180 - Abierto | 3 Abril",
           "adset_id": "120246600641870119",
-          "spend": 57.12,
-          "impressions": 8414,
+          "spend": 57.25,
+          "impressions": 8435,
           "reach": 6322,
           "clicks": 370,
-          "cpm": 6.788686,
-          "cpc": 0.154378,
-          "ctr": 4.397433,
-          "frequency": 1.330908,
+          "cpm": 6.787196,
+          "cpc": 0.15473,
+          "ctr": 4.386485,
+          "frequency": 1.33423,
           "purchases": 0,
           "leads": 11,
           "initiate_checkout": 0,
@@ -353,8 +353,8 @@
           "roas": 0
         }
       ],
-      "cpa": 57.54,
-      "roas": 50.4
+      "cpa": 57.68,
+      "roas": 50.28
     }
   ]
 }
