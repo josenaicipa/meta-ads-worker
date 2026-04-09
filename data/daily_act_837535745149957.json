@@ -470,8 +470,8 @@
     },
     {
       "date": "2026-04-08",
-      "spend": 169.7,
-      "impressions": 54585,
+      "spend": 169.78,
+      "impressions": 54594,
       "clicks": 1751,
       "purchases": 1,
       "leads": 23,
@@ -484,14 +484,14 @@
           "campaign_id": "120213899162560406",
           "adset_name": "Programar | CO | 16 | Shopify Woo Triangulacion | 4 Enero [Vid 3-2,1-2,2-1]",
           "adset_id": "120213899162620406",
-          "spend": 69.29,
-          "impressions": 11682,
+          "spend": 69.33,
+          "impressions": 11689,
           "reach": 7986,
           "clicks": 1067,
-          "cpm": 5.931347,
-          "cpc": 0.064939,
-          "ctr": 9.13371,
-          "frequency": 1.46281,
+          "cpm": 5.931217,
+          "cpc": 0.064977,
+          "ctr": 9.12824,
+          "frequency": 1.463686,
           "purchases": 0,
           "leads": 21,
           "initiate_checkout": 0,
@@ -505,20 +505,20 @@
           "campaign_id": "120237440904800406",
           "adset_name": "Abierto | Programar | 1DC | CO | Exclu IG Jose| 6 -8 | 15 Enero",
           "adset_id": "120237440904790406",
-          "spend": 80.98,
-          "impressions": 12589,
+          "spend": 81.02,
+          "impressions": 12591,
           "reach": 7357,
           "clicks": 258,
-          "cpm": 6.4326,
-          "cpc": 0.313876,
-          "ctr": 2.049408,
-          "frequency": 1.711159,
+          "cpm": 6.434755,
+          "cpc": 0.314031,
+          "ctr": 2.049083,
+          "frequency": 1.711431,
           "purchases": 1,
           "leads": 2,
           "initiate_checkout": 0,
           "add_to_cart": 0,
-          "cost_per_purchase": 80.98,
-          "roas": 35.811311
+          "cost_per_purchase": 81.02,
+          "roas": 35.793631
         },
         {
           "date": "2026-04-08",
@@ -542,8 +542,8 @@
           "roas": 0
         }
       ],
-      "cpa": 169.7,
-      "roas": 17.09
+      "cpa": 169.78,
+      "roas": 17.08
     }
   ]
 }
