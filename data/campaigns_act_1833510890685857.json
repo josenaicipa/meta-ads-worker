@@ -8,10 +8,10 @@
   "period": "last_7d",
   "level": "adset",
   "summary": {
-    "total_spend": 801.72,
+    "total_spend": 801.87,
     "total_purchases": 15,
     "total_revenue_estimated": 410.86,
-    "avg_cpa": 53.45,
+    "avg_cpa": 53.46,
     "avg_roas": 0.51
   },
   "campaigns": [
@@ -62,20 +62,20 @@
       "campaign_id": "120241959986740335",
       "adset_name": "USuscri | C | CO | Abierto | 22 marzo",
       "adset_id": "120241959986730335",
-      "spend": 350.2,
-      "impressions": 40732,
+      "spend": 350.35,
+      "impressions": 40740,
       "reach": 12011,
       "clicks": 595,
-      "cpm": 8.597663,
-      "cpc": 0.588571,
-      "ctr": 1.460768,
-      "frequency": 3.391225,
+      "cpm": 8.599656,
+      "cpc": 0.588824,
+      "ctr": 1.460481,
+      "frequency": 3.391891,
       "purchases": 12,
       "leads": 0,
       "initiate_checkout": 70,
       "add_to_cart": 0,
-      "cost_per_purchase": 29.183333,
-      "roas": 0.938464
+      "cost_per_purchase": 29.195833,
+      "roas": 0.938062
     },
     {
       "campaign_name": "CPAcademia | PixelSuscrip | Ventas | Master ABO | Empizadropoptotal | 21 Marzo",
