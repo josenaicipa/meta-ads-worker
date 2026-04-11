@@ -722,8 +722,8 @@
     },
     {
       "date": "2026-04-10",
-      "spend": 153.83,
-      "impressions": 14623,
+      "spend": 153.87,
+      "impressions": 14634,
       "clicks": 2168,
       "purchases": 1,
       "leads": 31,
@@ -820,14 +820,14 @@
           "campaign_id": "120242443135100036",
           "adset_name": "Programar | 1DC | CO | 180 Dias | Exclu  90-10 Programar | 6 -8 | 5 Marzo",
           "adset_id": "120242443135250036",
-          "spend": 33.8,
-          "impressions": 6230,
-          "reach": 4976,
+          "spend": 33.84,
+          "impressions": 6241,
+          "reach": 4981,
           "clicks": 106,
-          "cpm": 5.425361,
-          "cpc": 0.318868,
-          "ctr": 1.701445,
-          "frequency": 1.25201,
+          "cpm": 5.422208,
+          "cpc": 0.319245,
+          "ctr": 1.698446,
+          "frequency": 1.252961,
           "purchases": 0,
           "leads": 3,
           "initiate_checkout": 0,
@@ -836,7 +836,7 @@
           "roas": 0
         }
       ],
-      "cpa": 153.83,
+      "cpa": 153.87,
       "roas": 18.85
     }
   ]
