@@ -8,10 +8,10 @@
   "period": "last_7d",
   "level": "adset",
   "summary": {
-    "total_spend": 853.67,
+    "total_spend": 853.72,
     "total_purchases": 2,
     "total_revenue_estimated": 5800,
-    "avg_cpa": 426.84,
+    "avg_cpa": 426.86,
     "avg_roas": 6.79
   },
   "campaigns": [
@@ -82,20 +82,20 @@
       "campaign_id": "120245470534520119",
       "adset_name": "Testimonios | Programar | CO | Exclu Leads 180 - Abierto | 15 Marzo",
       "adset_id": "120245470534550119",
-      "spend": 422.49,
-      "impressions": 27409,
+      "spend": 422.54,
+      "impressions": 27410,
       "reach": 14927,
       "clicks": 1937,
-      "cpm": 15.41428,
-      "cpc": 0.218116,
-      "ctr": 7.067022,
-      "frequency": 1.836203,
+      "cpm": 15.415542,
+      "cpc": 0.218141,
+      "ctr": 7.066764,
+      "frequency": 1.83627,
       "purchases": 2,
       "leads": 43,
       "initiate_checkout": 0,
       "add_to_cart": 0,
-      "cost_per_purchase": 211.245,
-      "roas": 13.728136
+      "cost_per_purchase": 211.27,
+      "roas": 13.726511
     }
   ]
 }

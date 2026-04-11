@@ -722,9 +722,9 @@
     },
     {
       "date": "2026-04-10",
-      "spend": 153.79,
-      "impressions": 14619,
-      "clicks": 2167,
+      "spend": 153.83,
+      "impressions": 14623,
+      "clicks": 2168,
       "purchases": 1,
       "leads": 31,
       "initiate_checkout": 0,
@@ -760,10 +760,10 @@
           "spend": 25.17,
           "impressions": 1742,
           "reach": 1251,
-          "clicks": 469,
+          "clicks": 470,
           "cpm": 14.448909,
-          "cpc": 0.053667,
-          "ctr": 26.923077,
+          "cpc": 0.053553,
+          "ctr": 26.980482,
           "frequency": 1.392486,
           "purchases": 0,
           "leads": 5,
@@ -820,14 +820,14 @@
           "campaign_id": "120242443135100036",
           "adset_name": "Programar | 1DC | CO | 180 Dias | Exclu  90-10 Programar | 6 -8 | 5 Marzo",
           "adset_id": "120242443135250036",
-          "spend": 33.76,
-          "impressions": 6226,
+          "spend": 33.8,
+          "impressions": 6230,
           "reach": 4976,
           "clicks": 106,
-          "cpm": 5.422422,
-          "cpc": 0.318491,
-          "ctr": 1.702538,
-          "frequency": 1.251206,
+          "cpm": 5.425361,
+          "cpc": 0.318868,
+          "ctr": 1.701445,
+          "frequency": 1.25201,
           "purchases": 0,
           "leads": 3,
           "initiate_checkout": 0,
@@ -836,8 +836,8 @@
           "roas": 0
         }
       ],
-      "cpa": 153.79,
-      "roas": 18.86
+      "cpa": 153.83,
+      "roas": 18.85
     }
   ]
 }
