@@ -8,11 +8,11 @@
   "period": "last_7d",
   "level": "adset",
   "summary": {
-    "total_spend": 853.56,
+    "total_spend": 853.66,
     "total_purchases": 2,
     "total_revenue_estimated": 5800,
-    "avg_cpa": 426.78,
-    "avg_roas": 6.8
+    "avg_cpa": 426.83,
+    "avg_roas": 6.79
   },
   "campaigns": [
     {
@@ -62,14 +62,14 @@
       "campaign_id": "120245470534520119",
       "adset_name": "Testimonios Santiago| Programar | CO | Exclu Leads 180 - Abierto | 3 Abril",
       "adset_id": "120246600641870119",
-      "spend": 431.12,
-      "impressions": 43512,
+      "spend": 431.17,
+      "impressions": 43513,
       "reach": 21687,
       "clicks": 2767,
-      "cpm": 9.908071,
-      "cpc": 0.155808,
-      "ctr": 6.359165,
-      "frequency": 2.006363,
+      "cpm": 9.908993,
+      "cpc": 0.155826,
+      "ctr": 6.359019,
+      "frequency": 2.006409,
       "purchases": 0,
       "leads": 79,
       "initiate_checkout": 0,
@@ -82,20 +82,20 @@
       "campaign_id": "120245470534520119",
       "adset_name": "Testimonios | Programar | CO | Exclu Leads 180 - Abierto | 15 Marzo",
       "adset_id": "120245470534550119",
-      "spend": 422.44,
-      "impressions": 27407,
+      "spend": 422.49,
+      "impressions": 27408,
       "reach": 14927,
-      "clicks": 1936,
-      "cpm": 15.41358,
-      "cpc": 0.218202,
-      "ctr": 7.063889,
-      "frequency": 1.836069,
+      "clicks": 1937,
+      "cpm": 15.414842,
+      "cpc": 0.218116,
+      "ctr": 7.06728,
+      "frequency": 1.836136,
       "purchases": 2,
       "leads": 43,
       "initiate_checkout": 0,
       "add_to_cart": 0,
-      "cost_per_purchase": 211.22,
-      "roas": 13.72976
+      "cost_per_purchase": 211.245,
+      "roas": 13.728136
     }
   ]
 }
