@@ -470,8 +470,8 @@
     },
     {
       "date": "2026-04-10",
-      "spend": 145.68,
-      "impressions": 38554,
+      "spend": 145.69,
+      "impressions": 38555,
       "clicks": 1791,
       "purchases": 1,
       "leads": 23,
@@ -484,14 +484,14 @@
           "campaign_id": "120213899162560406",
           "adset_name": "Programar | CO | 16 | Shopify Woo Triangulacion | 4 Enero [Vid 3-2,1-2,2-1]",
           "adset_id": "120213899162620406",
-          "spend": 65.9,
-          "impressions": 8285,
+          "spend": 65.91,
+          "impressions": 8286,
           "reach": 5537,
           "clicks": 1228,
-          "cpm": 7.954134,
-          "cpc": 0.053665,
-          "ctr": 14.821967,
-          "frequency": 1.496298,
+          "cpm": 7.954381,
+          "cpc": 0.053673,
+          "ctr": 14.820179,
+          "frequency": 1.496478,
           "purchases": 0,
           "leads": 19,
           "initiate_checkout": 0,
@@ -542,7 +542,7 @@
           "roas": 0
         }
       ],
-      "cpa": 145.68,
+      "cpa": 145.69,
       "roas": 0.19
     }
   ]
