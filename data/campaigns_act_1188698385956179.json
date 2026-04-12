@@ -8,10 +8,10 @@
   "period": "last_7d",
   "level": "adset",
   "summary": {
-    "total_spend": 1192.26,
+    "total_spend": 1192.31,
     "total_purchases": 1,
     "total_revenue_estimated": 2900,
-    "avg_cpa": 1192.26,
+    "avg_cpa": 1192.31,
     "avg_roas": 2.43
   },
   "campaigns": [
@@ -53,7 +53,7 @@
       "objective": "OUTCOME_LEADS",
       "daily_budget": 90,
       "lifetime_budget": null,
-      "budget_remaining": 82.55
+      "budget_remaining": 74.17
     },
     {
       "name": "Clientes potenciales | Programar | Black Friday | Master ABO | US | VSL | 27 Nov",
@@ -306,14 +306,14 @@
       "campaign_id": "120242443135100036",
       "adset_name": "Programar | 1DC | CO | 180 Dias | Exclu  90-10 Programar | 6 -8 | 5 Marzo",
       "adset_id": "120242443135250036",
-      "spend": 278.85,
-      "impressions": 51226,
+      "spend": 278.88,
+      "impressions": 51231,
       "reach": 24145,
       "clicks": 749,
-      "cpm": 5.443525,
-      "cpc": 0.372296,
-      "ctr": 1.462148,
-      "frequency": 2.121599,
+      "cpm": 5.443579,
+      "cpc": 0.372336,
+      "ctr": 1.462005,
+      "frequency": 2.121806,
       "purchases": 0,
       "leads": 20,
       "initiate_checkout": 0,
@@ -366,20 +366,20 @@
       "campaign_id": "120238897440720036",
       "adset_name": "Testimonios | Programar | CO | Exclu Leads 180 - Abierto | 7 Dic - Copia",
       "adset_id": "120238898067090036",
-      "spend": 188.51,
-      "impressions": 19058,
+      "spend": 188.53,
+      "impressions": 19059,
       "reach": 12286,
       "clicks": 2793,
-      "cpm": 9.891384,
-      "cpc": 0.067494,
-      "ctr": 14.655263,
-      "frequency": 1.551196,
+      "cpm": 9.891915,
+      "cpc": 0.067501,
+      "ctr": 14.654494,
+      "frequency": 1.551278,
       "purchases": 1,
       "leads": 39,
       "initiate_checkout": 0,
       "add_to_cart": 0,
-      "cost_per_purchase": 188.51,
-      "roas": 15.383799
+      "cost_per_purchase": 188.53,
+      "roas": 15.382167
     }
   ]
 }
