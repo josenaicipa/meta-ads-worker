@@ -407,9 +407,9 @@
     },
     {
       "date": "2026-04-11",
-      "spend": 153.3,
-      "impressions": 18441,
-      "clicks": 252,
+      "spend": 153.31,
+      "impressions": 18443,
+      "clicks": 253,
       "purchases": 1,
       "leads": 0,
       "initiate_checkout": 20,
@@ -463,14 +463,14 @@
           "campaign_id": "120241959986740335",
           "adset_name": "USuscri | C | CO | Abierto | Red 9 Abril",
           "adset_id": "120242951595680335",
-          "spend": 50.05,
-          "impressions": 6003,
+          "spend": 50.06,
+          "impressions": 6005,
           "reach": 3076,
-          "clicks": 55,
-          "cpm": 8.337498,
-          "cpc": 0.91,
-          "ctr": 0.916209,
-          "frequency": 1.95156,
+          "clicks": 56,
+          "cpm": 8.336386,
+          "cpc": 0.893929,
+          "ctr": 0.932556,
+          "frequency": 1.952211,
           "purchases": 0,
           "leads": 0,
           "initiate_checkout": 3,
@@ -479,7 +479,7 @@
           "roas": 0
         }
       ],
-      "cpa": 153.3,
+      "cpa": 153.31,
       "roas": 0.18
     }
   ]

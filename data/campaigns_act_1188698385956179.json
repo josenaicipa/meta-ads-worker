@@ -53,7 +53,7 @@
       "objective": "OUTCOME_LEADS",
       "daily_budget": 90,
       "lifetime_budget": null,
-      "budget_remaining": 43.11
+      "budget_remaining": 32.25
     },
     {
       "name": "Clientes potenciales | Programar | Black Friday | Master ABO | US | VSL | 27 Nov",
@@ -307,13 +307,13 @@
       "adset_name": "Programar | 1DC | CO | 180 Dias | Exclu  90-10 Programar | 6 -8 | 5 Marzo",
       "adset_id": "120242443135250036",
       "spend": 278.89,
-      "impressions": 51242,
+      "impressions": 51246,
       "reach": 24151,
       "clicks": 749,
-      "cpm": 5.442606,
+      "cpm": 5.442181,
       "cpc": 0.37235,
-      "ctr": 1.461692,
-      "frequency": 2.121734,
+      "ctr": 1.461577,
+      "frequency": 2.1219,
       "purchases": 0,
       "leads": 20,
       "initiate_checkout": 0,
