@@ -407,8 +407,8 @@
     },
     {
       "date": "2026-04-13",
-      "spend": 113.56,
-      "impressions": 13675,
+      "spend": 113.6,
+      "impressions": 13681,
       "clicks": 228,
       "purchases": 3,
       "leads": 0,
@@ -421,20 +421,20 @@
           "campaign_id": "120241959986740335",
           "adset_name": "USuscri | C | CO | Abierto | 22 marzo",
           "adset_id": "120241959986730335",
-          "spend": 57.15,
-          "impressions": 5978,
+          "spend": 57.17,
+          "impressions": 5982,
           "reach": 3215,
           "clicks": 97,
-          "cpm": 9.560054,
-          "cpc": 0.589175,
-          "ctr": 1.622616,
-          "frequency": 1.859409,
+          "cpm": 9.557004,
+          "cpc": 0.589381,
+          "ctr": 1.621531,
+          "frequency": 1.860653,
           "purchases": 1,
           "leads": 0,
           "initiate_checkout": 6,
           "add_to_cart": 0,
-          "cost_per_purchase": 57.15,
-          "roas": 0.493613
+          "cost_per_purchase": 57.17,
+          "roas": 0.493441
         },
         {
           "date": "2026-04-13",
@@ -442,24 +442,24 @@
           "campaign_id": "120241959986740335",
           "adset_name": "USuscri | C | CO | Abierto |  | 9 Abril",
           "adset_id": "120242948265790335",
-          "spend": 56.41,
-          "impressions": 7697,
+          "spend": 56.43,
+          "impressions": 7699,
           "reach": 4475,
           "clicks": 131,
-          "cpm": 7.328829,
-          "cpc": 0.430611,
-          "ctr": 1.701962,
-          "frequency": 1.72,
+          "cpm": 7.329523,
+          "cpc": 0.430763,
+          "ctr": 1.70152,
+          "frequency": 1.720447,
           "purchases": 2,
           "leads": 0,
           "initiate_checkout": 13,
           "add_to_cart": 0,
-          "cost_per_purchase": 28.205,
-          "roas": 1.000177
+          "cost_per_purchase": 28.215,
+          "roas": 0.999823
         }
       ],
-      "cpa": 37.85,
-      "roas": 0.75
+      "cpa": 37.87,
+      "roas": 0.74
     }
   ]
 }
