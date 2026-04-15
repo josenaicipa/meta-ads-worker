@@ -386,8 +386,8 @@
     },
     {
       "date": "2026-04-14",
-      "spend": 97.85,
-      "impressions": 11926,
+      "spend": 98.82,
+      "impressions": 11939,
       "clicks": 196,
       "purchases": 1,
       "leads": 0,
@@ -400,20 +400,20 @@
           "campaign_id": "120241959986740335",
           "adset_name": "USuscri | C | CO | Abierto | 22 marzo",
           "adset_id": "120241959986730335",
-          "spend": 53.86,
-          "impressions": 6434,
-          "reach": 3625,
+          "spend": 54.83,
+          "impressions": 6443,
+          "reach": 3630,
           "clicks": 101,
-          "cpm": 8.371153,
-          "cpc": 0.533267,
-          "ctr": 1.569786,
-          "frequency": 1.774897,
+          "cpm": 8.510011,
+          "cpc": 0.542871,
+          "ctr": 1.567593,
+          "frequency": 1.774931,
           "purchases": 1,
           "leads": 0,
           "initiate_checkout": 10,
           "add_to_cart": 0,
-          "cost_per_purchase": 53.86,
-          "roas": 0.523765
+          "cost_per_purchase": 54.83,
+          "roas": 0.514499
         },
         {
           "date": "2026-04-14",
@@ -422,13 +422,13 @@
           "adset_name": "USuscri | C | CO | Abierto |  | 9 Abril",
           "adset_id": "120242948265790335",
           "spend": 43.99,
-          "impressions": 5492,
+          "impressions": 5496,
           "reach": 3609,
           "clicks": 95,
-          "cpm": 8.009832,
+          "cpm": 8.004003,
           "cpc": 0.463053,
-          "ctr": 1.729789,
-          "frequency": 1.521751,
+          "ctr": 1.72853,
+          "frequency": 1.52286,
           "purchases": 0,
           "leads": 0,
           "initiate_checkout": 15,
@@ -437,7 +437,7 @@
           "roas": 0
         }
       ],
-      "cpa": 97.85,
+      "cpa": 98.82,
       "roas": 0.29
     }
   ]
