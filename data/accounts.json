@@ -2,11 +2,11 @@
   "period": "last_7d",
   "total_accounts": 8,
   "summary": {
-    "total_spend": 5292.75,
-    "total_purchases": 19,
-    "total_revenue_estimated": 12020.73,
-    "avg_cpa": 278.57,
-    "avg_roas": 2.27
+    "total_spend": 5440.13,
+    "total_purchases": 18,
+    "total_revenue_estimated": 290029006280.28,
+    "avg_cpa": 302.23,
+    "avg_roas": 53312881.55
   },
   "accounts": [
     {
@@ -25,41 +25,41 @@
       "name": "Unlocked Academy",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1160.96,
-      "impressions": 338034,
+      "spend": 1162.02,
+      "impressions": 314147,
       "purchases": 2,
-      "cpa": 580.48,
-      "roas": 2.52
+      "cpa": 581.01,
+      "roas": 249590371.02
     },
     {
       "id": "act_1188698385956179",
       "name": "Unlocked 2",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1181.24,
-      "impressions": 125029,
+      "spend": 1240.7,
+      "impressions": 132975,
       "purchases": 2,
-      "cpa": 590.62,
-      "roas": 2.48
+      "cpa": 620.35,
+      "roas": 2.36
     },
     {
       "id": "act_1326515245073322",
       "name": "Unlocked 4 ",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 791.9,
-      "impressions": 61226,
-      "purchases": 2,
-      "cpa": 395.95,
-      "roas": 7.32
+      "spend": 800.07,
+      "impressions": 55096,
+      "purchases": 0,
+      "cpa": null,
+      "roas": 0
     },
     {
       "id": "act_1193318015585839",
       "name": "Unlocked 3",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1371.33,
-      "impressions": 71868,
+      "spend": 1444.51,
+      "impressions": 86389,
       "purchases": 0,
       "cpa": null,
       "roas": 0
@@ -80,11 +80,11 @@
       "name": "Academia Unlocked",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 787.32,
-      "impressions": 92759,
-      "purchases": 13,
-      "cpa": 60.56,
-      "roas": 0.47
+      "spend": 792.83,
+      "impressions": 92305,
+      "purchases": 14,
+      "cpa": 56.63,
+      "roas": 0.54
     },
     {
       "id": "act_790295570757526",
