@@ -386,8 +386,8 @@
     },
     {
       "date": "2026-04-15",
-      "spend": 89.04,
-      "impressions": 9206,
+      "spend": 89.07,
+      "impressions": 9212,
       "clicks": 172,
       "purchases": 3,
       "leads": 0,
@@ -400,20 +400,20 @@
           "campaign_id": "120241959986740335",
           "adset_name": "USuscri | C | CO | Abierto | 22 marzo",
           "adset_id": "120241959986730335",
-          "spend": 44.77,
-          "impressions": 4480,
+          "spend": 44.78,
+          "impressions": 4482,
           "reach": 2348,
           "clicks": 91,
-          "cpm": 9.993304,
-          "cpc": 0.491978,
-          "ctr": 2.03125,
-          "frequency": 1.908007,
+          "cpm": 9.991075,
+          "cpc": 0.492088,
+          "ctr": 2.030344,
+          "frequency": 1.908859,
           "purchases": 1,
           "leads": 0,
           "initiate_checkout": 5,
           "add_to_cart": 0,
-          "cost_per_purchase": 44.77,
-          "roas": 1.330132
+          "cost_per_purchase": 44.78,
+          "roas": 1.329835
         },
         {
           "date": "2026-04-15",
@@ -421,20 +421,20 @@
           "campaign_id": "120241959986740335",
           "adset_name": "USuscri | C | CO | Abierto |  | 9 Abril",
           "adset_id": "120242948265790335",
-          "spend": 44.27,
-          "impressions": 4726,
+          "spend": 44.29,
+          "impressions": 4730,
           "reach": 3136,
           "clicks": 81,
-          "cpm": 9.36733,
-          "cpc": 0.546543,
-          "ctr": 1.713923,
-          "frequency": 1.507015,
+          "cpm": 9.363636,
+          "cpc": 0.54679,
+          "ctr": 1.712474,
+          "frequency": 1.508291,
           "purchases": 2,
           "leads": 0,
           "initiate_checkout": 9,
           "add_to_cart": 0,
-          "cost_per_purchase": 22.135,
-          "roas": 1.274452
+          "cost_per_purchase": 22.145,
+          "roas": 1.273877
         },
         {
           "date": "2026-04-15",
@@ -458,7 +458,7 @@
           "roas": 0
         }
       ],
-      "cpa": 29.68,
+      "cpa": 29.69,
       "roas": 1.3
     }
   ]
