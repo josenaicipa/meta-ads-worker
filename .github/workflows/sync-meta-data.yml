@@ -35,6 +35,45 @@ jobs:
           echo "Pause response: $RESPONSE"
           echo "$RESPONSE" | jq .
 
+      - name: Get current budgets
+        run: |
+          echo "=== 22 marzo (winner) ==="
+          WINNER=$(curl -s -H "x-api-secret: ${{ secrets.META_API_SECRET }}" \
+            "${{ secrets.WORKER_URL }}/adset?adset_id=120241959986730335")
+          echo "$WINNER" | jq .
+          WINNER_BUDGET=$(echo "$WINNER" | jq -r '.daily_budget_cents // 0')
+          echo "Current budget cents: $WINNER_BUDGET"
+
+          echo "=== 9 Abril ==="
+          SECOND=$(curl -s -H "x-api-secret: ${{ secrets.META_API_SECRET }}" \
+            "${{ secrets.WORKER_URL }}/adset?adset_id=120242948265790335")
+          echo "$SECOND" | jq .
+          SECOND_BUDGET=$(echo "$SECOND" | jq -r '.daily_budget_cents // 0')
+          echo "Current budget cents: $SECOND_BUDGET"
+
+          echo "WINNER_BUDGET=$WINNER_BUDGET" >> $GITHUB_ENV
+          echo "SECOND_BUDGET=$SECOND_BUDGET" >> $GITHUB_ENV
+
+      - name: Redistribute budget to 22 marzo
+        run: |
+          # Add $7/day (700 cents) to winner, $3/day (300 cents) to second
+          NEW_WINNER=$(( $WINNER_BUDGET + 700 ))
+          NEW_SECOND=$(( $SECOND_BUDGET + 300 ))
+
+          echo "Increasing 22 marzo: $WINNER_BUDGET -> $NEW_WINNER cents"
+          curl -s -X POST \
+            -H "x-api-secret: ${{ secrets.META_API_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"adset_id\":\"120241959986730335\",\"daily_budget\":\"$NEW_WINNER\"}" \
+            "${{ secrets.WORKER_URL }}/adset/update" | jq .
+
+          echo "Increasing 9 Abril: $SECOND_BUDGET -> $NEW_SECOND cents"
+          curl -s -X POST \
+            -H "x-api-secret: ${{ secrets.META_API_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"adset_id\":\"120242948265790335\",\"daily_budget\":\"$NEW_SECOND\"}" \
+            "${{ secrets.WORKER_URL }}/adset/update" | jq .
+
   sync:
     needs: [deploy, manage]
     runs-on: ubuntu-latest

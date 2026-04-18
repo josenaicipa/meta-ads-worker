@@ -20,6 +20,7 @@ export default {
       if (path === '/campaigns') return handleCampaigns(url, token, env.META_AD_ACCOUNT_ID);
       if (path === '/accounts') return handleAllAccounts(url, token);
       if (path === '/daily') return handleDaily(url, token, env.META_AD_ACCOUNT_ID);
+      if (path === '/adset') return handleAdsetInfo(url, token);
     }
 
     if (request.method === 'POST') {
@@ -211,6 +212,30 @@ async function handleAllAccounts(url, token) {
     });
   } catch (err) {
     return json({ error: err.message || 'Error fetching accounts' }, 500);
+  }
+}
+
+async function handleAdsetInfo(url, token) {
+  const adsetId = url.searchParams.get('adset_id');
+  if (!adsetId) return json({ error: 'adset_id is required' }, 400);
+
+  try {
+    const data = await metaGet(adsetId, {
+      fields: 'name,status,daily_budget,lifetime_budget,budget_remaining,targeting,optimization_goal',
+    }, token);
+
+    return json({
+      adset_id: adsetId,
+      name: data.name,
+      status: data.status,
+      daily_budget: data.daily_budget ? parseFloat(data.daily_budget) / 100 : null,
+      daily_budget_cents: data.daily_budget ? parseInt(data.daily_budget) : null,
+      lifetime_budget: data.lifetime_budget ? parseFloat(data.lifetime_budget) / 100 : null,
+      budget_remaining: data.budget_remaining ? parseFloat(data.budget_remaining) / 100 : null,
+      optimization_goal: data.optimization_goal,
+    });
+  } catch (err) {
+    return json({ error: err.message || 'Error fetching ad set info' }, 500);
   }
 }
 
