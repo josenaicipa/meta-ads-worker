@@ -8,13 +8,21 @@
   "period": "last_7d",
   "level": "adset",
   "summary": {
-    "total_spend": 779.35,
+    "total_spend": 779.38,
     "total_purchases": 13,
     "total_revenue_estimated": 398.07,
     "avg_cpa": 59.95,
     "avg_roas": 0.51
   },
   "campaigns": [
+    {
+      "name": "CPAcademia | PixelSuscrip | Ventas | CBO Test | TopCreatives | 18 Abril",
+      "status": "ACTIVE",
+      "objective": "OUTCOME_SALES",
+      "daily_budget": 50,
+      "lifetime_budget": null,
+      "budget_remaining": 27.7
+    },
     {
       "name": "CPAcademia | PixelSuscrip | Ventas | Master ABO | Empizadropoptotal | 21 Marzo",
       "status": "ACTIVE",
@@ -62,20 +70,20 @@
       "campaign_id": "120241959986740335",
       "adset_name": "USuscri | C | CO | Abierto |  | 9 Abril",
       "adset_id": "120242948265790335",
-      "spend": 358.39,
-      "impressions": 41828,
+      "spend": 358.42,
+      "impressions": 41830,
       "reach": 11453,
       "clicks": 695,
-      "cpm": 8.568184,
-      "cpc": 0.515669,
-      "ctr": 1.661566,
-      "frequency": 3.652144,
+      "cpm": 8.568492,
+      "cpc": 0.515712,
+      "ctr": 1.661487,
+      "frequency": 3.652318,
       "purchases": 6,
       "leads": 1,
       "initiate_checkout": 86,
       "add_to_cart": 0,
-      "cost_per_purchase": 59.731667,
-      "roas": 0.472279
+      "cost_per_purchase": 59.736667,
+      "roas": 0.472239
     },
     {
       "campaign_name": "CPAcademia | PixelSuscrip | Ventas | Master ABO | Empizadropoptotal | 21 Marzo",

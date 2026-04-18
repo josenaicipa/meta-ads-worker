@@ -428,8 +428,8 @@
     },
     {
       "date": "2026-04-17",
-      "spend": 80.03,
-      "impressions": 9535,
+      "spend": 80.06,
+      "impressions": 9537,
       "clicks": 135,
       "purchases": 3,
       "leads": 0,
@@ -463,14 +463,14 @@
           "campaign_id": "120241959986740335",
           "adset_name": "USuscri | C | CO | Abierto |  | 9 Abril",
           "adset_id": "120242948265790335",
-          "spend": 37.97,
-          "impressions": 4975,
+          "spend": 38,
+          "impressions": 4977,
           "reach": 3305,
           "clicks": 63,
-          "cpm": 7.632161,
-          "cpc": 0.602698,
-          "ctr": 1.266332,
-          "frequency": 1.505295,
+          "cpm": 7.635122,
+          "cpc": 0.603175,
+          "ctr": 1.265823,
+          "frequency": 1.5059,
           "purchases": 0,
           "leads": 0,
           "initiate_checkout": 6,
@@ -479,7 +479,7 @@
           "roas": 0
         }
       ],
-      "cpa": 26.68,
+      "cpa": 26.69,
       "roas": 1.06
     }
   ]
