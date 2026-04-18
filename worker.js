@@ -21,13 +21,24 @@ export default {
       if (path === '/accounts') return handleAllAccounts(url, token);
       if (path === '/daily') return handleDaily(url, token, env.META_AD_ACCOUNT_ID);
       if (path === '/adset') return handleAdsetInfo(url, token);
+      if (path === '/adset/ads') return handleAdsetAds(url, token);
+      if (path === '/adset/targeting') return handleAdsetTargeting(url, token);
     }
 
     if (request.method === 'POST') {
       if (path === '/adset/update') return handleAdsetUpdate(request, token);
+      if (path === '/campaign/create') return handleCampaignCreate(request, token, env.META_AD_ACCOUNT_ID);
+      if (path === '/adset/create') return handleAdsetCreate(request, token, env.META_AD_ACCOUNT_ID);
+      if (path === '/ad/create') return handleAdCreate(request, token, env.META_AD_ACCOUNT_ID);
     }
 
-    return json({ error: 'Not found. Use GET /campaigns, GET /accounts, or POST /adset/update' }, 404);
+    return json({
+      error: 'Not found',
+      endpoints: {
+        GET: ['/campaigns', '/accounts', '/daily', '/adset', '/adset/ads', '/adset/targeting'],
+        POST: ['/adset/update', '/campaign/create', '/adset/create', '/ad/create'],
+      },
+    }, 404);
   },
 };
 
@@ -277,6 +288,160 @@ async function handleAdsetUpdate(request, token) {
   }
 }
 
+async function handleAdsetAds(url, token) {
+  const adsetId = url.searchParams.get('adset_id');
+  if (!adsetId) return json({ error: 'adset_id is required' }, 400);
+
+  try {
+    const data = await metaGet(`${adsetId}/ads`, {
+      fields: 'id,name,status,creative{id,name,body,title,link_url,image_url,video_id,object_story_id,effective_object_story_id}',
+      limit: '50',
+    }, token);
+
+    return json({
+      adset_id: adsetId,
+      ads: (data.data || []).map(ad => ({
+        id: ad.id,
+        name: ad.name,
+        status: ad.status,
+        creative: ad.creative || null,
+      })),
+    });
+  } catch (err) {
+    return json({ error: err.message || 'Error fetching ads' }, 500);
+  }
+}
+
+async function handleAdsetTargeting(url, token) {
+  const adsetId = url.searchParams.get('adset_id');
+  if (!adsetId) return json({ error: 'adset_id is required' }, 400);
+
+  try {
+    const data = await metaGet(adsetId, {
+      fields: 'name,targeting,promoted_object,optimization_goal,billing_event,bid_strategy,daily_budget,status',
+    }, token);
+
+    return json({
+      adset_id: adsetId,
+      name: data.name,
+      status: data.status,
+      optimization_goal: data.optimization_goal,
+      billing_event: data.billing_event,
+      bid_strategy: data.bid_strategy,
+      daily_budget: data.daily_budget ? parseFloat(data.daily_budget) / 100 : null,
+      targeting: data.targeting,
+      promoted_object: data.promoted_object,
+    });
+  } catch (err) {
+    return json({ error: err.message || 'Error fetching targeting' }, 500);
+  }
+}
+
+// POST /campaign/create — creates a campaign on the default (Academia Unlocked) account
+// unless account_id is overridden. Defaults to PAUSED so nothing goes live by accident.
+// Example payload:
+// {
+//   "name": "Academia Unlocked - Ventas Abril",
+//   "objective": "OUTCOME_SALES",
+//   "status": "PAUSED",
+//   "special_ad_categories": [],
+//   "daily_budget": 5000,            // cents (optional; mutually exclusive with lifetime_budget)
+//   "lifetime_budget": 50000,        // cents (optional)
+//   "buying_type": "AUCTION",        // optional: AUCTION | RESERVED
+//   "bid_strategy": "LOWEST_COST_WITHOUT_CAP", // optional
+//   "promoted_object": { "pixel_id": "123", "custom_event_type": "PURCHASE" } // optional
+// }
+async function handleCampaignCreate(request, token, defaultAccountId) {
+  try {
+    const body = await request.json();
+    const accountId = body.account_id || defaultAccountId;
+    if (!accountId) return json({ error: 'account_id is required' }, 400);
+    if (!body.name) return json({ error: 'name is required' }, 400);
+    if (!body.objective) return json({ error: 'objective is required' }, 400);
+    if (body.daily_budget && body.lifetime_budget) {
+      return json({ error: 'Provide either daily_budget or lifetime_budget, not both' }, 400);
+    }
+
+    const params = {
+      name: body.name,
+      objective: body.objective,
+      status: body.status || 'PAUSED',
+      special_ad_categories: JSON.stringify(body.special_ad_categories || []),
+    };
+
+    if (body.buying_type) params.buying_type = body.buying_type;
+    if (body.daily_budget) params.daily_budget = body.daily_budget;
+    if (body.lifetime_budget) params.lifetime_budget = body.lifetime_budget;
+    if (body.bid_strategy) params.bid_strategy = body.bid_strategy;
+    if (body.promoted_object) params.promoted_object = JSON.stringify(body.promoted_object);
+
+    const result = await metaPost(`${accountId}/campaigns`, params, token);
+    return json({ success: true, campaign_id: result.id, ...result });
+  } catch (err) {
+    return json({ error: err.message || 'Error creating campaign' }, 500);
+  }
+}
+
+async function handleAdsetCreate(request, token, defaultAccountId) {
+  try {
+    const body = await request.json();
+    const accountId = body.account_id || defaultAccountId;
+    if (!accountId) return json({ error: 'account_id is required' }, 400);
+    if (!body.campaign_id) return json({ error: 'campaign_id is required' }, 400);
+    if (!body.name) return json({ error: 'name is required' }, 400);
+
+    const params = {
+      name: body.name,
+      campaign_id: body.campaign_id,
+      status: body.status || 'PAUSED',
+      optimization_goal: body.optimization_goal || 'OFFSITE_CONVERSIONS',
+      billing_event: body.billing_event || 'IMPRESSIONS',
+      bid_strategy: body.bid_strategy || 'LOWEST_COST_WITHOUT_CAP',
+      targeting: JSON.stringify(body.targeting),
+    };
+
+    if (body.promoted_object) {
+      params.promoted_object = JSON.stringify(body.promoted_object);
+    }
+
+    if (body.daily_budget) params.daily_budget = body.daily_budget;
+
+    const result = await metaPost(`${accountId}/adsets`, params, token);
+    return json({ success: true, adset_id: result.id, ...result });
+  } catch (err) {
+    return json({ error: err.message || 'Error creating ad set' }, 500);
+  }
+}
+
+async function handleAdCreate(request, token, defaultAccountId) {
+  try {
+    const body = await request.json();
+    const accountId = body.account_id || defaultAccountId;
+    if (!accountId) return json({ error: 'account_id is required' }, 400);
+    if (!body.adset_id) return json({ error: 'adset_id is required' }, 400);
+    if (!body.name) return json({ error: 'name is required' }, 400);
+
+    const params = {
+      name: body.name,
+      adset_id: body.adset_id,
+      status: body.status || 'PAUSED',
+    };
+
+    if (body.creative_id) {
+      params.creative = JSON.stringify({ creative_id: body.creative_id });
+    } else if (body.object_story_id) {
+      params.creative = JSON.stringify({ object_story_id: body.object_story_id });
+    } else {
+      return json({ error: 'creative_id or object_story_id is required' }, 400);
+    }
+
+    const result = await metaPost(`${accountId}/ads`, params, token);
+    return json({ success: true, ad_id: result.id, ...result });
+  } catch (err) {
+    return json({ error: err.message || 'Error creating ad' }, 500);
+  }
+}
+
 function parseInsightRow(row) {
   return {
     campaign_name: row.campaign_name,
@@ -319,6 +484,19 @@ async function metaGet(endpoint, params, token) {
   const qs = new URLSearchParams(params);
   qs.append('access_token', token);
   const res = await fetch(`${META_BASE}/${endpoint}?${qs.toString()}`);
+  const data = await res.json();
+  if (data.error) throw new Error(`${data.error.message} (code ${data.error.code})`);
+  return data;
+}
+
+async function metaPost(endpoint, params, token) {
+  const qs = new URLSearchParams(params);
+  qs.append('access_token', token);
+  const res = await fetch(`${META_BASE}/${endpoint}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: qs.toString(),
+  });
   const data = await res.json();
   if (data.error) throw new Error(`${data.error.message} (code ${data.error.code})`);
   return data;
