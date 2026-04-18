@@ -22,7 +22,11 @@ export default {
       if (path === '/daily') return handleDaily(url, token, env.META_AD_ACCOUNT_ID);
     }
 
-    return json({ error: 'Not found. Use GET /campaigns or GET /accounts' }, 404);
+    if (request.method === 'POST') {
+      if (path === '/adset/update') return handleAdsetUpdate(request, token);
+    }
+
+    return json({ error: 'Not found. Use GET /campaigns, GET /accounts, or POST /adset/update' }, 404);
   },
 };
 
@@ -210,6 +214,44 @@ async function handleAllAccounts(url, token) {
   }
 }
 
+async function handleAdsetUpdate(request, token) {
+  try {
+    const body = await request.json();
+    const { adset_id, status, daily_budget } = body;
+
+    if (!adset_id) return json({ error: 'adset_id is required' }, 400);
+
+    const params = {};
+    if (status) params.status = status; // ACTIVE, PAUSED
+    if (daily_budget) params.daily_budget = daily_budget; // in cents
+
+    if (Object.keys(params).length === 0) {
+      return json({ error: 'Provide status and/or daily_budget' }, 400);
+    }
+
+    const qs = new URLSearchParams(params);
+    qs.append('access_token', token);
+
+    const res = await fetch(`${META_BASE}/${adset_id}?${qs.toString()}`, {
+      method: 'POST',
+    });
+    const data = await res.json();
+
+    if (data.error) {
+      return json({ error: data.error.message, code: data.error.code }, 400);
+    }
+
+    return json({
+      success: true,
+      adset_id,
+      updates: params,
+      result: data,
+    });
+  } catch (err) {
+    return json({ error: err.message || 'Error updating ad set' }, 500);
+  }
+}
+
 function parseInsightRow(row) {
   return {
     campaign_name: row.campaign_name,
@@ -271,7 +313,7 @@ function corsOk() {
   return new Response(null, {
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type, x-api-secret',
     },
   });

@@ -21,8 +21,22 @@ jobs:
       - name: Wait for deploy
         run: sleep 30
 
-  sync:
+  manage:
     needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pause Red 9 Abril adset
+        run: |
+          RESPONSE=$(curl -s -X POST \
+            -H "x-api-secret: ${{ secrets.META_API_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -d '{"adset_id":"120242951595680335","status":"PAUSED"}' \
+            "${{ secrets.WORKER_URL }}/adset/update")
+          echo "Pause response: $RESPONSE"
+          echo "$RESPONSE" | jq .
+
+  sync:
+    needs: [deploy, manage]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
