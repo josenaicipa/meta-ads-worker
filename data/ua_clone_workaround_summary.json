@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-04-18T19:29:17Z",
+  "account_id": "act_837535745149957",
+  "workaround": "clone_clean_adsets_then_pause_old",
+  "source_adsets": {
+    "rm": "120237440904790406",
+    "videos": "120213899162620406"
+  },
+  "new_adsets": {
+    "rm": "120241451057050406",
+    "videos": "120241451057380406"
+  }
+}

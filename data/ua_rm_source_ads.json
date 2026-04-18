@@ -1,0 +1,44 @@
+{
+  "adset_id": "120237440904790406",
+  "ads": [
+    {
+      "id": "120237441108840406",
+      "name": "AD 08 | 15 Enero",
+      "status": "PAUSED",
+      "creative": {
+        "id": "764541163337003",
+        "name": "Agenda tu Cita 📆 2026-01-15-cc8b791c355e702eaa1f30ecb2cb25be",
+        "body": "🚀 No es falta de ganas. Es falta de dirección.\n\nMuchos emprendedores tienen productos, tiendas y campañas…\npero no tienen un camino claro.\n\nEn la mentoría no solo aprendes ecommerce:\n✔️ Entiendes qué hacer primero\n✔️ Evitas errores que cuestan tiempo y dinero\n✔️ Tomas decisiones con seguridad\n\n💬 Cuando tienes guía, todo cambia.\n\n✨ Si quieres dejar de improvisar y empezar a construir un negocio con sentido,\nhaz clic en Más información y agenda tu cita.",
+        "title": "Agenda tu Cita 📆",
+        "video_id": "1220414913378132",
+        "effective_object_story_id": "414007921787678_122181270632458715"
+      }
+    },
+    {
+      "id": "120237440904810406",
+      "name": "AD 06 | 15 Enero",
+      "status": "PAUSED",
+      "creative": {
+        "id": "1403546564481281",
+        "name": "Agenda tu Cita 📆 2026-01-15-ae71782a16e5d70f77f71569eb92046a",
+        "body": "🤝 Lo que más cambia no es la tienda… es sentir que no estás solo.\n\nDurante la mentoría, nuestros alumnos destacan algo clave:\n✔️ Acompañamiento constante\n✔️ Guía personalizada según sus metas reales\n\nNo es teoría suelta.\nEs alguien que te dice qué hacer, cómo hacerlo y cuándo hacerlo, según tu punto exacto del camino.\n\n✨ Si hoy sientes que tu ecommerce podría dar más, pero no sabes por dónde seguir…\neste es tu momento.\n\n👉 Haz clic en Más información y agenda tu cita.",
+        "title": "Agenda tu Cita 📆",
+        "video_id": "869687589271920",
+        "effective_object_story_id": "414007921787678_122181270656458715"
+      }
+    },
+    {
+      "id": "120237441092610406",
+      "name": "AD 07 | 15 Enero",
+      "status": "ACTIVE",
+      "creative": {
+        "id": "872406558847262",
+        "name": "Agenda tu Cita 📆 2026-01-15-ec021c5bee6303aae85a9f879b6fe25c",
+        "body": "😤 ¿Estás haciendo todo… pero los resultados no llegan?\n\nNo es que el ecommerce no funcione.\nEs que nadie te enseñó a hacerlo con estrategia.\n\nEn la mentoría no avanzas a ciegas:\n✔️ Tienes acompañamiento real\n✔️ Recibes guía personalizada\n✔️ Sabes exactamente qué optimizar y cuándo\n\n💬 Cuando dejas de adivinar, empiezas a vender.\n\n✨ Si estás listo para tomarte tu negocio en serio,\nhaz clic en Más información y agenda tu cita hoy.",
+        "title": "Agenda tu Cita 📆",
+        "video_id": "1633690448077210",
+        "effective_object_story_id": "414007921787678_122181270638458715"
+      }
+    }
+  ]
+}

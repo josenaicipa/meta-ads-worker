@@ -1,0 +1,51 @@
+{
+  "account_id": "act_837535745149957",
+  "campaign_id": "120237440904800406",
+  "name": "Abierto | Programar | 1DC | CO | Exclu IG Jose| 6 -8 | 15 Enero | clean 20260418-1928",
+  "status": "ACTIVE",
+  "daily_budget": 9060,
+  "optimization_goal": "OFFSITE_CONVERSIONS",
+  "billing_event": "IMPRESSIONS",
+  "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+  "targeting": {
+    "age_max": 50,
+    "age_min": 25,
+    "excluded_custom_audiences": [
+      {
+        "id": "120229382326910406",
+        "name": "Schedule 180 Dias"
+      },
+      {
+        "id": "120229382347310406",
+        "name": "Lead 180 Dias"
+      }
+    ],
+    "custom_audiences": [
+      {
+        "id": "120215576549120406",
+        "name": "Interacción Todos IG[Jose] - R365D"
+      }
+    ],
+    "geo_locations": {
+      "countries": [
+        "CO"
+      ],
+      "location_types": [
+        "home",
+        "recent"
+      ]
+    },
+    "targeting_relaxation_types": {
+      "lookalike": 0,
+      "custom_audience": 0
+    },
+    "targeting_automation": {
+      "advantage_audience": 0
+    }
+  },
+  "promoted_object": {
+    "pixel_id": "447508691525748",
+    "custom_event_type": "SCHEDULE",
+    "smart_pse_enabled": false
+  }
+}

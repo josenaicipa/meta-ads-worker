@@ -1,0 +1,57 @@
+{
+  "account_id": "act_837535745149957",
+  "campaign_id": "120213899162560406",
+  "name": "Programar | CO | 16 | Shopify Woo Triangulacion | 4 Enero [clean 20260418-1928]",
+  "status": "ACTIVE",
+  "daily_budget": 6040,
+  "optimization_goal": "OFFSITE_CONVERSIONS",
+  "billing_event": "IMPRESSIONS",
+  "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+  "targeting": {
+    "age_max": 65,
+    "age_min": 18,
+    "age_range": [
+      25,
+      50
+    ],
+    "flexible_spec": [
+      {
+        "interests": [
+          {
+            "id": "6003109292833",
+            "name": "Drop shipping"
+          },
+          {
+            "id": "6003230166788",
+            "name": "Shopify"
+          },
+          {
+            "id": "6015859819015",
+            "name": "WooCommerce"
+          }
+        ]
+      }
+    ],
+    "geo_locations": {
+      "countries": [
+        "CO"
+      ],
+      "location_types": [
+        "home",
+        "recent"
+      ]
+    },
+    "brand_safety_content_filter_levels": [
+      "FACEBOOK_STANDARD",
+      "AN_STANDARD"
+    ],
+    "targeting_automation": {
+      "advantage_audience": 1
+    }
+  },
+  "promoted_object": {
+    "pixel_id": "447508691525748",
+    "custom_event_type": "SCHEDULE",
+    "smart_pse_enabled": false
+  }
+}
