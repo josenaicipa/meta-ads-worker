@@ -2,11 +2,11 @@
   "period": "last_7d",
   "total_accounts": 8,
   "summary": {
-    "total_spend": 5534.11,
+    "total_spend": 5534.17,
     "total_purchases": 18,
     "total_revenue_estimated": 290029012225.07,
     "avg_cpa": 307.45,
-    "avg_roas": 52407525.73
+    "avg_roas": 52406957.54
   },
   "accounts": [
     {
@@ -36,10 +36,10 @@
       "name": "Unlocked 2",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1281.17,
-      "impressions": 142360,
+      "spend": 1281.23,
+      "impressions": 142362,
       "purchases": 3,
-      "cpa": 427.06,
+      "cpa": 427.08,
       "roas": 4.7
     },
     {
@@ -81,7 +81,7 @@
       "status": "ACTIVE",
       "currency": "USD",
       "spend": 779.34,
-      "impressions": 90069,
+      "impressions": 90070,
       "purchases": 13,
       "cpa": 59.95,
       "roas": 0.51
