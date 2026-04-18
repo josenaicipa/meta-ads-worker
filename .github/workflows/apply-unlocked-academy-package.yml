@@ -1,0 +1,150 @@
+name: Apply Unlocked Academy Package
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply-unlocked-academy-package.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    env:
+      ACCOUNT_ID: act_837535745149957
+      RM_ADSET_ID: '120237440904790406'
+      VIDEOS_ADSET_ID: '120213899162620406'
+      RM_OFF_AD: 'AD 08 | 15 Enero'
+      RM_KEEP_1: 'AD 07 | 15 Enero'
+      RM_KEEP_2: 'AD 06 | 15 Enero'
+      VIDEOS_OFF_AD: 'Video Enero 2-1 | 4 Enero - Copia'
+      VIDEOS_KEEP_1: 'Video Enero 3-2 | 4 Enero - Copia'
+      VIDEOS_KEEP_2: 'Video Enero 2-1 | 4 Enero'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare workspace
+        run: mkdir -p data
+
+      - name: Fetch current adset info
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          META_API_SECRET: ${{ secrets.META_API_SECRET }}
+        run: |
+          set -euo pipefail
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset?adset_id=${RM_ADSET_ID}" -o data/unlocked_academy_rm_before.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset?adset_id=${VIDEOS_ADSET_ID}" -o data/unlocked_academy_videos_before.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset/ads?adset_id=${RM_ADSET_ID}" -o data/unlocked_academy_rm_ads_before.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset/ads?adset_id=${VIDEOS_ADSET_ID}" -o data/unlocked_academy_videos_ads_before.json
+
+      - name: Compute new budgets and target ad ids
+        run: |
+          set -euo pipefail
+          RM_BUDGET=$(jq -r '.daily_budget_cents // 0' data/unlocked_academy_rm_before.json)
+          VIDEOS_BUDGET=$(jq -r '.daily_budget_cents // 0' data/unlocked_academy_videos_before.json)
+
+          if [ "$RM_BUDGET" -le 0 ] || [ "$VIDEOS_BUDGET" -le 0 ]; then
+            echo "Missing adset daily budgets; refusing to update budgets blindly."
+            echo "rm_budget=$RM_BUDGET videos_budget=$VIDEOS_BUDGET"
+            exit 1
+          fi
+
+          TOTAL=$((RM_BUDGET + VIDEOS_BUDGET))
+          NEW_RM=$(((TOTAL * 60 + 50) / 100))
+          NEW_VIDEOS=$((TOTAL - NEW_RM))
+
+          RM_OFF_ID=$(jq -r --arg NAME "$RM_OFF_AD" '.ads[] | select(.name == $NAME) | .id' data/unlocked_academy_rm_ads_before.json | head -n1)
+          VIDEOS_OFF_ID=$(jq -r --arg NAME "$VIDEOS_OFF_AD" '.ads[] | select(.name == $NAME) | .id' data/unlocked_academy_videos_ads_before.json | head -n1)
+
+          if [ -z "$RM_OFF_ID" ] || [ -z "$VIDEOS_OFF_ID" ]; then
+            echo "Could not resolve one or more ad IDs to pause."
+            echo "RM_OFF_ID=$RM_OFF_ID VIDEOS_OFF_ID=$VIDEOS_OFF_ID"
+            exit 1
+          fi
+
+          printf 'RM_BUDGET=%s\nVIDEOS_BUDGET=%s\nTOTAL=%s\nNEW_RM=%s\nNEW_VIDEOS=%s\nRM_OFF_ID=%s\nVIDEOS_OFF_ID=%s\n' \
+            "$RM_BUDGET" "$VIDEOS_BUDGET" "$TOTAL" "$NEW_RM" "$NEW_VIDEOS" "$RM_OFF_ID" "$VIDEOS_OFF_ID" >> "$GITHUB_ENV"
+
+      - name: Pause selected ads
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          META_API_SECRET: ${{ secrets.META_API_SECRET }}
+        run: |
+          set -euo pipefail
+          curl -sS -X POST -H "x-api-secret: ${META_API_SECRET}" -H 'Content-Type: application/json' \
+            "${WORKER_URL}/ad/update" \
+            -d "{\"ad_id\":\"${RM_OFF_ID}\",\"status\":\"PAUSED\"}" \
+            -o data/unlocked_academy_pause_rm_ad08.json
+
+          curl -sS -X POST -H "x-api-secret: ${META_API_SECRET}" -H 'Content-Type: application/json' \
+            "${WORKER_URL}/ad/update" \
+            -d "{\"ad_id\":\"${VIDEOS_OFF_ID}\",\"status\":\"PAUSED\"}" \
+            -o data/unlocked_academy_pause_videos_copy.json
+
+      - name: Rebalance adset budgets 60-40 toward RM
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          META_API_SECRET: ${{ secrets.META_API_SECRET }}
+        run: |
+          set -euo pipefail
+          curl -sS -X POST -H "x-api-secret: ${META_API_SECRET}" -H 'Content-Type: application/json' \
+            "${WORKER_URL}/adset/update" \
+            -d "{\"adset_id\":\"${RM_ADSET_ID}\",\"daily_budget\":${NEW_RM}}" \
+            -o data/unlocked_academy_update_rm_budget.json
+
+          curl -sS -X POST -H "x-api-secret: ${META_API_SECRET}" -H 'Content-Type: application/json' \
+            "${WORKER_URL}/adset/update" \
+            -d "{\"adset_id\":\"${VIDEOS_ADSET_ID}\",\"daily_budget\":${NEW_VIDEOS}}" \
+            -o data/unlocked_academy_update_videos_budget.json
+
+      - name: Fetch after state
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          META_API_SECRET: ${{ secrets.META_API_SECRET }}
+        run: |
+          set -euo pipefail
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset?adset_id=${RM_ADSET_ID}" -o data/unlocked_academy_rm_after.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset?adset_id=${VIDEOS_ADSET_ID}" -o data/unlocked_academy_videos_after.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset/ads?adset_id=${RM_ADSET_ID}" -o data/unlocked_academy_rm_ads_after.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset/ads?adset_id=${VIDEOS_ADSET_ID}" -o data/unlocked_academy_videos_ads_after.json
+
+      - name: Write summary artifact
+        run: |
+          set -euo pipefail
+          jq -n \
+            --arg account_id "$ACCOUNT_ID" \
+            --arg rm_adset_id "$RM_ADSET_ID" \
+            --arg videos_adset_id "$VIDEOS_ADSET_ID" \
+            --arg rm_paused_name "$RM_OFF_AD" \
+            --arg videos_paused_name "$VIDEOS_OFF_AD" \
+            --argjson rm_before_budget "$RM_BUDGET" \
+            --argjson videos_before_budget "$VIDEOS_BUDGET" \
+            --argjson rm_after_budget "$(jq '.daily_budget_cents // 0' data/unlocked_academy_rm_after.json)" \
+            --argjson videos_after_budget "$(jq '.daily_budget_cents // 0' data/unlocked_academy_videos_after.json)" \
+            --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            '{
+              generated_at: $generated_at,
+              account_id: $account_id,
+              package: {
+                keep_traffic_untouched: true,
+                paused_ads: [$rm_paused_name, $videos_paused_name],
+                rebalance: { toward_rm_ratio: "60/40", rm_adset_id: $rm_adset_id, videos_adset_id: $videos_adset_id }
+              },
+              budgets_cents: {
+                rm_before: $rm_before_budget,
+                videos_before: $videos_before_budget,
+                rm_after: $rm_after_budget,
+                videos_after: $videos_after_budget
+              }
+            }' > data/manual_apply_unlocked_academy.json
+
+      - name: Commit result
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/apply-unlocked-academy-package.yml data/unlocked_academy_*.json data/manual_apply_unlocked_academy.json
+          git diff --staged --quiet || (git commit -m "Apply Unlocked Academy package" && git push)
