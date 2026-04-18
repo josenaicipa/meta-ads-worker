@@ -148,3 +148,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .github/workflows/apply-unlocked-academy-package.yml data/unlocked_academy_*.json data/manual_apply_unlocked_academy.json
           git diff --staged --quiet || (git commit -m "Apply Unlocked Academy package" && git push)
+
+# rerun marker
