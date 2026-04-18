@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-18T18:31:04Z",
+  "generated_at": "2026-04-18T18:32:55Z",
   "account_id": "act_837535745149957",
   "package": {
     "keep_traffic_untouched": true,
@@ -14,8 +14,8 @@
     }
   },
   "budgets_cents": {
-    "rm_before": 8000,
-    "videos_before": 7100,
+    "rm_before": 9060,
+    "videos_before": 6040,
     "rm_after": 9060,
     "videos_after": 6040
   }
