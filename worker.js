@@ -30,13 +30,14 @@ export default {
       if (path === '/campaign/create') return handleCampaignCreate(request, token, env.META_AD_ACCOUNT_ID);
       if (path === '/adset/create') return handleAdsetCreate(request, token, env.META_AD_ACCOUNT_ID);
       if (path === '/ad/create') return handleAdCreate(request, token, env.META_AD_ACCOUNT_ID);
+      if (path === '/stack/create') return handleStackCreate(request, token, env.META_AD_ACCOUNT_ID);
     }
 
     return json({
       error: 'Not found',
       endpoints: {
         GET: ['/campaigns', '/accounts', '/daily', '/adset', '/adset/ads', '/adset/targeting'],
-        POST: ['/adset/update', '/campaign/create', '/adset/create', '/ad/create'],
+        POST: ['/adset/update', '/campaign/create', '/adset/create', '/ad/create', '/stack/create'],
       },
     }, 404);
   },
@@ -439,6 +440,195 @@ async function handleAdCreate(request, token, defaultAccountId) {
     return json({ success: true, ad_id: result.id, ...result });
   } catch (err) {
     return json({ error: err.message || 'Error creating ad' }, 500);
+  }
+}
+
+// POST /stack/create — creates a full Meta stack (campaign + ad sets + ads) in one call.
+// Campaign is created first; then each ad set under that campaign; then each ad under its ad set.
+// Anything already created before a failure is preserved and reported; per-item errors are
+// returned in `errors` so the caller can retry only the failing pieces. All statuses default
+// to PAUSED so nothing goes live by accident.
+//
+// Example payload:
+// {
+//   "account_id": "act_1234567890",            // optional; falls back to META_AD_ACCOUNT_ID
+//   "campaign": {
+//     "name": "Academia Unlocked - Ventas Abril",
+//     "objective": "OUTCOME_SALES",
+//     "status": "PAUSED",
+//     "special_ad_categories": [],
+//     "daily_budget": 5000                      // cents (optional; mutually exclusive with lifetime_budget)
+//   },
+//   "adsets": [
+//     {
+//       "name": "AS - LAL Compradores 1%",
+//       "daily_budget": 2500,
+//       "optimization_goal": "OFFSITE_CONVERSIONS",
+//       "billing_event": "IMPRESSIONS",
+//       "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+//       "targeting": { "geo_locations": { "countries": ["CO"] }, "age_min": 25, "age_max": 55 },
+//       "promoted_object": { "pixel_id": "123", "custom_event_type": "PURCHASE" },
+//       "ads": [
+//         { "name": "Ad - Video Testimonio", "creative_id": "987654321" },
+//         { "name": "Ad - Story Natalia",    "object_story_id": "111_222" }
+//       ]
+//     }
+//   ]
+// }
+//
+// Response shape:
+// {
+//   "success": true,
+//   "campaign_id": "120000...",
+//   "adset_ids": ["120000...", ...],
+//   "ad_ids":    ["120000...", ...],
+//   "adsets":    [{ "index": 0, "name": "...", "adset_id": "..." }, ...],
+//   "ads":       [{ "adset_index": 0, "ad_index": 0, "name": "...", "ad_id": "...", "adset_id": "..." }, ...],
+//   "errors":    [{ "type": "ad", "adset_index": 0, "ad_index": 1, "name": "...", "error": "..." }]
+// }
+async function handleStackCreate(request, token, defaultAccountId) {
+  try {
+    const body = await request.json();
+    const accountId = body.account_id || defaultAccountId;
+    if (!accountId) return json({ error: 'account_id is required' }, 400);
+
+    const campaign = body.campaign;
+    const adsets = body.adsets;
+
+    if (!campaign || typeof campaign !== 'object') {
+      return json({ error: 'campaign object is required' }, 400);
+    }
+    if (!campaign.name) return json({ error: 'campaign.name is required' }, 400);
+    if (!campaign.objective) return json({ error: 'campaign.objective is required' }, 400);
+    if (campaign.daily_budget && campaign.lifetime_budget) {
+      return json({ error: 'campaign: provide either daily_budget or lifetime_budget, not both' }, 400);
+    }
+
+    if (!Array.isArray(adsets) || adsets.length === 0) {
+      return json({ error: 'adsets must be a non-empty array' }, 400);
+    }
+
+    // Pre-validate every ad set and ad before hitting the API, so we fail fast
+    // instead of creating a campaign that is missing half its children.
+    for (let i = 0; i < adsets.length; i++) {
+      const as = adsets[i];
+      if (!as || typeof as !== 'object') return json({ error: `adsets[${i}] must be an object` }, 400);
+      if (!as.name) return json({ error: `adsets[${i}].name is required` }, 400);
+      if (!as.targeting) return json({ error: `adsets[${i}].targeting is required` }, 400);
+      if (as.ads !== undefined && !Array.isArray(as.ads)) {
+        return json({ error: `adsets[${i}].ads must be an array if provided` }, 400);
+      }
+      const ads = Array.isArray(as.ads) ? as.ads : [];
+      for (let j = 0; j < ads.length; j++) {
+        const ad = ads[j];
+        if (!ad || typeof ad !== 'object') return json({ error: `adsets[${i}].ads[${j}] must be an object` }, 400);
+        if (!ad.name) return json({ error: `adsets[${i}].ads[${j}].name is required` }, 400);
+        if (!ad.creative_id && !ad.object_story_id) {
+          return json({ error: `adsets[${i}].ads[${j}]: creative_id or object_story_id is required` }, 400);
+        }
+      }
+    }
+
+    // 1) Create the campaign first.
+    const campaignParams = {
+      name: campaign.name,
+      objective: campaign.objective,
+      status: campaign.status || 'PAUSED',
+      special_ad_categories: JSON.stringify(campaign.special_ad_categories || []),
+    };
+    if (campaign.buying_type) campaignParams.buying_type = campaign.buying_type;
+    if (campaign.daily_budget) campaignParams.daily_budget = campaign.daily_budget;
+    if (campaign.lifetime_budget) campaignParams.lifetime_budget = campaign.lifetime_budget;
+    if (campaign.bid_strategy) campaignParams.bid_strategy = campaign.bid_strategy;
+    if (campaign.promoted_object) campaignParams.promoted_object = JSON.stringify(campaign.promoted_object);
+
+    let campaignId;
+    try {
+      const result = await metaPost(`${accountId}/campaigns`, campaignParams, token);
+      campaignId = result.id;
+    } catch (err) {
+      return json({
+        success: false,
+        stage: 'campaign',
+        error: err.message || 'Error creating campaign',
+      }, 500);
+    }
+
+    // 2) Create each ad set under the new campaign. 3) Then each ad under its new ad set.
+    const adsetResults = [];
+    const adResults = [];
+    const errors = [];
+
+    for (let i = 0; i < adsets.length; i++) {
+      const as = adsets[i];
+      const adsetParams = {
+        name: as.name,
+        campaign_id: campaignId,
+        status: as.status || 'PAUSED',
+        optimization_goal: as.optimization_goal || 'OFFSITE_CONVERSIONS',
+        billing_event: as.billing_event || 'IMPRESSIONS',
+        bid_strategy: as.bid_strategy || 'LOWEST_COST_WITHOUT_CAP',
+        targeting: JSON.stringify(as.targeting),
+      };
+      if (as.promoted_object) adsetParams.promoted_object = JSON.stringify(as.promoted_object);
+      if (as.daily_budget) adsetParams.daily_budget = as.daily_budget;
+
+      let adsetId;
+      try {
+        const result = await metaPost(`${accountId}/adsets`, adsetParams, token);
+        adsetId = result.id;
+        adsetResults.push({ index: i, name: as.name, adset_id: adsetId });
+      } catch (err) {
+        errors.push({ type: 'adset', index: i, name: as.name, error: err.message });
+        continue; // skip the ads for a failed ad set
+      }
+
+      const ads = Array.isArray(as.ads) ? as.ads : [];
+      for (let j = 0; j < ads.length; j++) {
+        const ad = ads[j];
+        const adParams = {
+          name: ad.name,
+          adset_id: adsetId,
+          status: ad.status || 'PAUSED',
+        };
+        if (ad.creative_id) {
+          adParams.creative = JSON.stringify({ creative_id: ad.creative_id });
+        } else if (ad.object_story_id) {
+          adParams.creative = JSON.stringify({ object_story_id: ad.object_story_id });
+        }
+
+        try {
+          const result = await metaPost(`${accountId}/ads`, adParams, token);
+          adResults.push({
+            adset_index: i,
+            ad_index: j,
+            name: ad.name,
+            ad_id: result.id,
+            adset_id: adsetId,
+          });
+        } catch (err) {
+          errors.push({
+            type: 'ad',
+            adset_index: i,
+            ad_index: j,
+            name: ad.name,
+            error: err.message,
+          });
+        }
+      }
+    }
+
+    return json({
+      success: errors.length === 0,
+      campaign_id: campaignId,
+      adset_ids: adsetResults.map(a => a.adset_id),
+      ad_ids: adResults.map(a => a.ad_id),
+      adsets: adsetResults,
+      ads: adResults,
+      errors,
+    });
+  } catch (err) {
+    return json({ error: err.message || 'Error creating stack' }, 500);
   }
 }
 
