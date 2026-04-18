@@ -1,0 +1,191 @@
+name: Apply Unlocked Academy Clone Workaround
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/apply-unlocked-academy-clone-workaround.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    env:
+      ACCOUNT_ID: act_837535745149957
+      RM_CAMPAIGN_ID: '120237440904800406'
+      VIDEOS_CAMPAIGN_ID: '120213899162560406'
+      RM_SOURCE_ADSET_ID: '120237440904790406'
+      VIDEOS_SOURCE_ADSET_ID: '120213899162620406'
+      RM_KEEP_1: 'AD 07 | 15 Enero'
+      RM_KEEP_2: 'AD 06 | 15 Enero'
+      VIDEOS_KEEP_1: 'Video Enero 3-2 | 4 Enero - Copia'
+      VIDEOS_KEEP_2: 'Video Enero 2-1 | 4 Enero'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare workspace
+        run: mkdir -p data
+
+      - name: Fetch source adsets
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          META_API_SECRET: ${{ secrets.META_API_SECRET }}
+        run: |
+          set -euo pipefail
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset?adset_id=${RM_SOURCE_ADSET_ID}" -o data/ua_rm_source_info.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset?adset_id=${VIDEOS_SOURCE_ADSET_ID}" -o data/ua_videos_source_info.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset/targeting?adset_id=${RM_SOURCE_ADSET_ID}" -o data/ua_rm_source_targeting.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset/targeting?adset_id=${VIDEOS_SOURCE_ADSET_ID}" -o data/ua_videos_source_targeting.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset/ads?adset_id=${RM_SOURCE_ADSET_ID}" -o data/ua_rm_source_ads.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset/ads?adset_id=${VIDEOS_SOURCE_ADSET_ID}" -o data/ua_videos_source_ads.json
+
+      - name: Resolve budgets and creative ids
+        run: |
+          set -euo pipefail
+          RM_BUDGET=$(jq -r '.daily_budget_cents // 0' data/ua_rm_source_info.json)
+          VIDEOS_BUDGET=$(jq -r '.daily_budget_cents // 0' data/ua_videos_source_info.json)
+          if [ "$RM_BUDGET" -le 0 ] || [ "$VIDEOS_BUDGET" -le 0 ]; then
+            echo "Missing source adset budgets"
+            exit 1
+          fi
+
+          RM_CREATIVE_1=$(jq -r --arg NAME "$RM_KEEP_1" '.ads[] | select(.name == $NAME) | .creative.id' data/ua_rm_source_ads.json | head -n1)
+          RM_CREATIVE_2=$(jq -r --arg NAME "$RM_KEEP_2" '.ads[] | select(.name == $NAME) | .creative.id' data/ua_rm_source_ads.json | head -n1)
+          VIDEOS_CREATIVE_1=$(jq -r --arg NAME "$VIDEOS_KEEP_1" '.ads[] | select(.name == $NAME) | .creative.id' data/ua_videos_source_ads.json | head -n1)
+          VIDEOS_CREATIVE_2=$(jq -r --arg NAME "$VIDEOS_KEEP_2" '.ads[] | select(.name == $NAME) | .creative.id' data/ua_videos_source_ads.json | head -n1)
+
+          test -n "$RM_CREATIVE_1"
+          test -n "$RM_CREATIVE_2"
+          test -n "$VIDEOS_CREATIVE_1"
+          test -n "$VIDEOS_CREATIVE_2"
+
+          DATE_TAG=$(date -u +%Y%m%d-%H%M)
+          printf 'RM_BUDGET=%s\nVIDEOS_BUDGET=%s\nRM_CREATIVE_1=%s\nRM_CREATIVE_2=%s\nVIDEOS_CREATIVE_1=%s\nVIDEOS_CREATIVE_2=%s\nDATE_TAG=%s\n' \
+            "$RM_BUDGET" "$VIDEOS_BUDGET" "$RM_CREATIVE_1" "$RM_CREATIVE_2" "$VIDEOS_CREATIVE_1" "$VIDEOS_CREATIVE_2" "$DATE_TAG" >> "$GITHUB_ENV"
+
+      - name: Create clean RM adset
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          META_API_SECRET: ${{ secrets.META_API_SECRET }}
+        run: |
+          set -euo pipefail
+          jq -n \
+            --arg account_id "$ACCOUNT_ID" \
+            --arg campaign_id "$RM_CAMPAIGN_ID" \
+            --arg name "Abierto | Programar | 1DC | CO | Exclu IG Jose| 6 -8 | 15 Enero | clean ${DATE_TAG}" \
+            --argjson daily_budget "$RM_BUDGET" \
+            --arg optimization_goal "$(jq -r '.optimization_goal' data/ua_rm_source_targeting.json)" \
+            --arg billing_event "$(jq -r '.billing_event' data/ua_rm_source_targeting.json)" \
+            --arg bid_strategy "$(jq -r '.bid_strategy' data/ua_rm_source_targeting.json)" \
+            --argjson targeting "$(jq '.targeting' data/ua_rm_source_targeting.json)" \
+            --argjson promoted_object "$(jq '.promoted_object' data/ua_rm_source_targeting.json)" \
+            '{account_id:$account_id,campaign_id:$campaign_id,name:$name,status:"ACTIVE",daily_budget:$daily_budget,optimization_goal:$optimization_goal,billing_event:$billing_event,bid_strategy:$bid_strategy,targeting:$targeting,promoted_object:$promoted_object}' > data/ua_rm_create_adset_payload.json
+
+          curl -sS -X POST -H "x-api-secret: ${META_API_SECRET}" -H 'Content-Type: application/json' \
+            "${WORKER_URL}/adset/create" \
+            --data @data/ua_rm_create_adset_payload.json \
+            -o data/ua_rm_create_adset_result.json
+
+          RM_NEW_ADSET_ID=$(jq -r '.adset_id // empty' data/ua_rm_create_adset_result.json)
+          test -n "$RM_NEW_ADSET_ID"
+          echo "RM_NEW_ADSET_ID=$RM_NEW_ADSET_ID" >> "$GITHUB_ENV"
+
+      - name: Create clean videos adset
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          META_API_SECRET: ${{ secrets.META_API_SECRET }}
+        run: |
+          set -euo pipefail
+          jq -n \
+            --arg account_id "$ACCOUNT_ID" \
+            --arg campaign_id "$VIDEOS_CAMPAIGN_ID" \
+            --arg name "Programar | CO | 16 | Shopify Woo Triangulacion | 4 Enero [clean ${DATE_TAG}]" \
+            --argjson daily_budget "$VIDEOS_BUDGET" \
+            --arg optimization_goal "$(jq -r '.optimization_goal' data/ua_videos_source_targeting.json)" \
+            --arg billing_event "$(jq -r '.billing_event' data/ua_videos_source_targeting.json)" \
+            --arg bid_strategy "$(jq -r '.bid_strategy' data/ua_videos_source_targeting.json)" \
+            --argjson targeting "$(jq '.targeting' data/ua_videos_source_targeting.json)" \
+            --argjson promoted_object "$(jq '.promoted_object' data/ua_videos_source_targeting.json)" \
+            '{account_id:$account_id,campaign_id:$campaign_id,name:$name,status:"ACTIVE",daily_budget:$daily_budget,optimization_goal:$optimization_goal,billing_event:$billing_event,bid_strategy:$bid_strategy,targeting:$targeting,promoted_object:$promoted_object}' > data/ua_videos_create_adset_payload.json
+
+          curl -sS -X POST -H "x-api-secret: ${META_API_SECRET}" -H 'Content-Type: application/json' \
+            "${WORKER_URL}/adset/create" \
+            --data @data/ua_videos_create_adset_payload.json \
+            -o data/ua_videos_create_adset_result.json
+
+          VIDEOS_NEW_ADSET_ID=$(jq -r '.adset_id // empty' data/ua_videos_create_adset_result.json)
+          test -n "$VIDEOS_NEW_ADSET_ID"
+          echo "VIDEOS_NEW_ADSET_ID=$VIDEOS_NEW_ADSET_ID" >> "$GITHUB_ENV"
+
+      - name: Create RM ads in clean adset
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          META_API_SECRET: ${{ secrets.META_API_SECRET }}
+        run: |
+          set -euo pipefail
+          jq -n --arg account_id "$ACCOUNT_ID" --arg adset_id "$RM_NEW_ADSET_ID" --arg name "$RM_KEEP_1 | clean ${DATE_TAG}" --arg creative_id "$RM_CREATIVE_1" '{account_id:$account_id,adset_id:$adset_id,name:$name,status:"ACTIVE",creative_id:$creative_id}' > data/ua_rm_create_ad1.json
+          jq -n --arg account_id "$ACCOUNT_ID" --arg adset_id "$RM_NEW_ADSET_ID" --arg name "$RM_KEEP_2 | clean ${DATE_TAG}" --arg creative_id "$RM_CREATIVE_2" '{account_id:$account_id,adset_id:$adset_id,name:$name,status:"ACTIVE",creative_id:$creative_id}' > data/ua_rm_create_ad2.json
+          curl -sS -X POST -H "x-api-secret: ${META_API_SECRET}" -H 'Content-Type: application/json' "${WORKER_URL}/ad/create" --data @data/ua_rm_create_ad1.json -o data/ua_rm_create_ad1_result.json
+          curl -sS -X POST -H "x-api-secret: ${META_API_SECRET}" -H 'Content-Type: application/json' "${WORKER_URL}/ad/create" --data @data/ua_rm_create_ad2.json -o data/ua_rm_create_ad2_result.json
+
+      - name: Create videos ads in clean adset
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          META_API_SECRET: ${{ secrets.META_API_SECRET }}
+        run: |
+          set -euo pipefail
+          jq -n --arg account_id "$ACCOUNT_ID" --arg adset_id "$VIDEOS_NEW_ADSET_ID" --arg name "$VIDEOS_KEEP_1 | clean ${DATE_TAG}" --arg creative_id "$VIDEOS_CREATIVE_1" '{account_id:$account_id,adset_id:$adset_id,name:$name,status:"ACTIVE",creative_id:$creative_id}' > data/ua_videos_create_ad1.json
+          jq -n --arg account_id "$ACCOUNT_ID" --arg adset_id "$VIDEOS_NEW_ADSET_ID" --arg name "$VIDEOS_KEEP_2 | clean ${DATE_TAG}" --arg creative_id "$VIDEOS_CREATIVE_2" '{account_id:$account_id,adset_id:$adset_id,name:$name,status:"ACTIVE",creative_id:$creative_id}' > data/ua_videos_create_ad2.json
+          curl -sS -X POST -H "x-api-secret: ${META_API_SECRET}" -H 'Content-Type: application/json' "${WORKER_URL}/ad/create" --data @data/ua_videos_create_ad1.json -o data/ua_videos_create_ad1_result.json
+          curl -sS -X POST -H "x-api-secret: ${META_API_SECRET}" -H 'Content-Type: application/json' "${WORKER_URL}/ad/create" --data @data/ua_videos_create_ad2.json -o data/ua_videos_create_ad2_result.json
+
+      - name: Pause source adsets after clean clones exist
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          META_API_SECRET: ${{ secrets.META_API_SECRET }}
+        run: |
+          set -euo pipefail
+          curl -sS -X POST -H "x-api-secret: ${META_API_SECRET}" -H 'Content-Type: application/json' \
+            "${WORKER_URL}/adset/update" \
+            -d "{\"adset_id\":\"${RM_SOURCE_ADSET_ID}\",\"status\":\"PAUSED\"}" \
+            -o data/ua_rm_pause_source_adset.json
+          curl -sS -X POST -H "x-api-secret: ${META_API_SECRET}" -H 'Content-Type: application/json' \
+            "${WORKER_URL}/adset/update" \
+            -d "{\"adset_id\":\"${VIDEOS_SOURCE_ADSET_ID}\",\"status\":\"PAUSED\"}" \
+            -o data/ua_videos_pause_source_adset.json
+
+      - name: Fetch final state
+        env:
+          WORKER_URL: ${{ secrets.WORKER_URL }}
+          META_API_SECRET: ${{ secrets.META_API_SECRET }}
+        run: |
+          set -euo pipefail
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset?adset_id=${RM_SOURCE_ADSET_ID}" -o data/ua_rm_source_after_pause.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset?adset_id=${VIDEOS_SOURCE_ADSET_ID}" -o data/ua_videos_source_after_pause.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset?adset_id=${RM_NEW_ADSET_ID}" -o data/ua_rm_new_after.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset?adset_id=${VIDEOS_NEW_ADSET_ID}" -o data/ua_videos_new_after.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset/ads?adset_id=${RM_NEW_ADSET_ID}" -o data/ua_rm_new_ads_after.json
+          curl -sS -H "x-api-secret: ${META_API_SECRET}" "${WORKER_URL}/adset/ads?adset_id=${VIDEOS_NEW_ADSET_ID}" -o data/ua_videos_new_ads_after.json
+
+      - name: Write summary
+        run: |
+          set -euo pipefail
+          jq -n \
+            --arg account_id "$ACCOUNT_ID" \
+            --arg rm_source_adset_id "$RM_SOURCE_ADSET_ID" \
+            --arg videos_source_adset_id "$VIDEOS_SOURCE_ADSET_ID" \
+            --arg rm_new_adset_id "$RM_NEW_ADSET_ID" \
+            --arg videos_new_adset_id "$VIDEOS_NEW_ADSET_ID" \
+            --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            '{generated_at:$generated_at,account_id:$account_id,workaround:"clone_clean_adsets_then_pause_old",source_adsets:{rm:$rm_source_adset_id,videos:$videos_source_adset_id},new_adsets:{rm:$rm_new_adset_id,videos:$videos_new_adset_id}}' > data/ua_clone_workaround_summary.json
+
+      - name: Commit result
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/apply-unlocked-academy-clone-workaround.yml data/ua_*.json
+          git diff --staged --quiet || (git commit -m "Apply Unlocked Academy clone workaround" && git push)
