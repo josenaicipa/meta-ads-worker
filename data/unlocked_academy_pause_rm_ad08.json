@@ -1,0 +1,20 @@
+{
+  "error": "Not found",
+  "endpoints": {
+    "GET": [
+      "/campaigns",
+      "/accounts",
+      "/daily",
+      "/adset",
+      "/adset/ads",
+      "/adset/targeting"
+    ],
+    "POST": [
+      "/adset/update",
+      "/campaign/create",
+      "/adset/create",
+      "/ad/create",
+      "/stack/create"
+    ]
+  }
+}
