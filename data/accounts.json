@@ -2,11 +2,11 @@
   "period": "last_7d",
   "total_accounts": 8,
   "summary": {
-    "total_spend": 5535.11,
+    "total_spend": 5647.83,
     "total_purchases": 18,
-    "total_revenue_estimated": 290029012225.07,
-    "avg_cpa": 307.51,
-    "avg_roas": 52398057.53
+    "total_revenue_estimated": 290029016096.86,
+    "avg_cpa": 313.77,
+    "avg_roas": 51352292.14
   },
   "accounts": [
     {
@@ -25,30 +25,30 @@
       "name": "Unlocked Academy",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1166.59,
-      "impressions": 284508,
-      "purchases": 2,
-      "cpa": 583.29,
-      "roas": 248612628.09
+      "spend": 1188.74,
+      "impressions": 271350,
+      "purchases": 3,
+      "cpa": 396.25,
+      "roas": 243980188.86
     },
     {
       "id": "act_1188698385956179",
       "name": "Unlocked 2",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1281.68,
-      "impressions": 142431,
+      "spend": 1332.64,
+      "impressions": 146970,
       "purchases": 3,
-      "cpa": 427.23,
-      "roas": 4.7
+      "cpa": 444.21,
+      "roas": 4.52
     },
     {
       "id": "act_1326515245073322",
       "name": "Unlocked 4 ",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 757.7,
-      "impressions": 43698,
+      "spend": 751.35,
+      "impressions": 44489,
       "purchases": 0,
       "cpa": null,
       "roas": 0
@@ -58,8 +58,8 @@
       "name": "Unlocked 3",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1549.74,
-      "impressions": 100516,
+      "spend": 1636.81,
+      "impressions": 108476,
       "purchases": 0,
       "cpa": null,
       "roas": 0
@@ -80,11 +80,11 @@
       "name": "Academia Unlocked",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 779.4,
-      "impressions": 90078,
-      "purchases": 13,
-      "cpa": 59.95,
-      "roas": 0.51
+      "spend": 738.29,
+      "impressions": 87435,
+      "purchases": 12,
+      "cpa": 61.52,
+      "roas": 0.5
     },
     {
       "id": "act_790295570757526",
