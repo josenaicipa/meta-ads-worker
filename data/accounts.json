@@ -2,11 +2,11 @@
   "period": "last_7d",
   "total_accounts": 8,
   "summary": {
-    "total_spend": 6082.01,
+    "total_spend": 6083.1,
     "total_purchases": 17,
-    "total_revenue_estimated": 290029016069.86,
-    "avg_cpa": 357.77,
-    "avg_roas": 47686376.06
+    "total_revenue_estimated": 290029016069.87,
+    "avg_cpa": 357.83,
+    "avg_roas": 47677831.38
   },
   "accounts": [
     {
@@ -25,21 +25,21 @@
       "name": "Unlocked Academy",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1328.97,
-      "impressions": 228870,
+      "spend": 1329.12,
+      "impressions": 228920,
       "purchases": 3,
-      "cpa": 442.99,
-      "roas": 218235934.37
+      "cpa": 443.04,
+      "roas": 218211305
     },
     {
       "id": "act_1188698385956179",
       "name": "Unlocked 2",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1533.27,
-      "impressions": 155231,
+      "spend": 1533.5,
+      "impressions": 155263,
       "purchases": 2,
-      "cpa": 766.64,
+      "cpa": 766.75,
       "roas": 3.91
     },
     {
@@ -47,8 +47,8 @@
       "name": "Unlocked 4 ",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 710.82,
-      "impressions": 42129,
+      "spend": 710.83,
+      "impressions": 42130,
       "purchases": 0,
       "cpa": null,
       "roas": 0
@@ -58,8 +58,8 @@
       "name": "Unlocked 3",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1715.16,
-      "impressions": 111723,
+      "spend": 1715.22,
+      "impressions": 111728,
       "purchases": 0,
       "cpa": null,
       "roas": 0
@@ -80,10 +80,10 @@
       "name": "Academia Unlocked",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 793.79,
-      "impressions": 99019,
+      "spend": 794.43,
+      "impressions": 99050,
       "purchases": 12,
-      "cpa": 66.15,
+      "cpa": 66.2,
       "roas": 0.47
     },
     {
