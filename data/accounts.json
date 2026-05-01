@@ -2,11 +2,11 @@
   "period": "last_7d",
   "total_accounts": 8,
   "summary": {
-    "total_spend": 7376.28,
-    "total_purchases": 27,
-    "total_revenue_estimated": 3627.16,
-    "avg_cpa": 273.2,
-    "avg_roas": 0.49
+    "total_spend": 7292.41,
+    "total_purchases": 29,
+    "total_revenue_estimated": 6555.37,
+    "avg_cpa": 251.46,
+    "avg_roas": 0.9
   },
   "accounts": [
     {
@@ -25,30 +25,30 @@
       "name": "Unlocked Academy",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1420.34,
-      "impressions": 258584,
-      "purchases": 0,
-      "cpa": null,
-      "roas": 0
+      "spend": 1404.73,
+      "impressions": 255492,
+      "purchases": 1,
+      "cpa": 1404.73,
+      "roas": 2.06
     },
     {
       "id": "act_1188698385956179",
       "name": "Unlocked 2",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 2214.36,
-      "impressions": 197032,
+      "spend": 2158.3,
+      "impressions": 193728,
       "purchases": 1,
-      "cpa": 2214.36,
-      "roas": 1.31
+      "cpa": 2158.3,
+      "roas": 1.34
     },
     {
       "id": "act_1326515245073322",
       "name": "Unlocked 4 ",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 940.64,
-      "impressions": 59771,
+      "spend": 981.7,
+      "impressions": 61468,
       "purchases": 0,
       "cpa": null,
       "roas": 0
@@ -58,8 +58,8 @@
       "name": "Unlocked 3",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1313.91,
-      "impressions": 50979,
+      "spend": 1298.84,
+      "impressions": 49232,
       "purchases": 0,
       "cpa": null,
       "roas": 0
@@ -80,11 +80,11 @@
       "name": "Unlocked Low Ticket 1",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1487.03,
-      "impressions": 172706,
-      "purchases": 26,
-      "cpa": 57.19,
-      "roas": 0.49
+      "spend": 1448.84,
+      "impressions": 174829,
+      "purchases": 27,
+      "cpa": 53.66,
+      "roas": 0.52
     },
     {
       "id": "act_790295570757526",
