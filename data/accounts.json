@@ -2,10 +2,10 @@
   "period": "last_7d",
   "total_accounts": 8,
   "summary": {
-    "total_spend": 7342.53,
+    "total_spend": 7342.98,
     "total_purchases": 27,
     "total_revenue_estimated": 6498.95,
-    "avg_cpa": 271.95,
+    "avg_cpa": 271.96,
     "avg_roas": 0.89
   },
   "accounts": [
@@ -25,10 +25,10 @@
       "name": "Unlocked Academy",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1407.95,
-      "impressions": 255075,
+      "spend": 1407.98,
+      "impressions": 255090,
       "purchases": 1,
-      "cpa": 1407.95,
+      "cpa": 1407.98,
       "roas": 2.06
     },
     {
@@ -36,10 +36,10 @@
       "name": "Unlocked 2",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 2165.48,
-      "impressions": 193133,
+      "spend": 2165.64,
+      "impressions": 193160,
       "purchases": 1,
-      "cpa": 2165.48,
+      "cpa": 2165.64,
       "roas": 1.34
     },
     {
@@ -47,8 +47,8 @@
       "name": "Unlocked 4 ",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 980.63,
-      "impressions": 63426,
+      "spend": 980.67,
+      "impressions": 63434,
       "purchases": 0,
       "cpa": null,
       "roas": 0
@@ -59,7 +59,7 @@
       "status": "ACTIVE",
       "currency": "USD",
       "spend": 1326.05,
-      "impressions": 49822,
+      "impressions": 49824,
       "purchases": 0,
       "cpa": null,
       "roas": 0
@@ -80,10 +80,10 @@
       "name": "Unlocked Low Ticket 1",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1462.42,
-      "impressions": 181847,
+      "spend": 1462.64,
+      "impressions": 181879,
       "purchases": 25,
-      "cpa": 58.5,
+      "cpa": 58.51,
       "roas": 0.48
     },
     {
