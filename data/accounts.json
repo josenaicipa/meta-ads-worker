@@ -2,7 +2,7 @@
   "period": "last_7d",
   "total_accounts": 8,
   "summary": {
-    "total_spend": 7294.28,
+    "total_spend": 7294.33,
     "total_purchases": 24,
     "total_revenue_estimated": 6414.33,
     "avg_cpa": 303.93,
@@ -26,7 +26,7 @@
       "status": "ACTIVE",
       "currency": "USD",
       "spend": 1417.94,
-      "impressions": 254755,
+      "impressions": 254766,
       "purchases": 1,
       "cpa": 1417.94,
       "roas": 2.05
@@ -37,7 +37,7 @@
       "status": "ACTIVE",
       "currency": "USD",
       "spend": 2137.11,
-      "impressions": 185275,
+      "impressions": 185277,
       "purchases": 1,
       "cpa": 2137.11,
       "roas": 1.36
@@ -80,8 +80,8 @@
       "name": "Unlocked Low Ticket 1",
       "status": "ACTIVE",
       "currency": "USD",
-      "spend": 1463.92,
-      "impressions": 185194,
+      "spend": 1463.97,
+      "impressions": 185205,
       "purchases": 22,
       "cpa": 66.54,
       "roas": 0.42
