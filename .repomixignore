@@ -1,0 +1,69 @@
+# Repomix safety ignore for AI context packs
+# Keep secrets, credentials, caches, build output, logs, screenshots, and heavy data out of LLM context.
+
+# Secrets / credentials
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.kubeconfig
+*secret*
+*secrets*
+*credential*
+*credentials*
+*service-account*
+*service_account*
+*token*
+*password*
+
+# Dependencies / build artifacts
+node_modules/
+.next/
+dist/
+build/
+coverage/
+.cache/
+.turbo/
+.vercel/
+.amplify/
+.wrangler/
+
+# Logs / locks / temp
+logs/
+*.log
+*.lock
+tmp/
+temp/
+.DS_Store
+
+# Databases / exports / backups / heavy generated data
+*.sqlite
+*.sqlite3
+*.db
+raw-data/
+exports/
+backups/
+ops/cutover-backups/
+screenshots/
+
+# Browser profiles / local auth caches
+profile-*/
+cloud-automation/profile-*/
+**/Default/Cookies*
+**/Default/History*
+**/Default/Secure Preferences
+**/Local State
+
+# Generated analysis caches that can be huge
+graphify-out/cache/
+graphify-out/memory/
+.claude-flow/
+# Heavy research/transcript/generated content; include manually with area mode only when needed
+docs/research/
+*.vtt
+*corpus*.md
+*backup*
