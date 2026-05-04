@@ -8,10 +8,10 @@
   "period": "last_7d",
   "level": "adset",
   "summary": {
-    "total_spend": 2068.68,
+    "total_spend": 2068.69,
     "total_purchases": 1,
     "total_revenue_estimated": 2900,
-    "avg_cpa": 2068.68,
+    "avg_cpa": 2068.69,
     "avg_roas": 1.4
   },
   "campaigns": [
@@ -77,7 +77,7 @@
       "objective": "OUTCOME_LEADS",
       "daily_budget": 90,
       "lifetime_budget": null,
-      "budget_remaining": 30.65
+      "budget_remaining": 19.94
     },
     {
       "name": "Clientes potenciales | Programar | Black Friday | Master ABO | US | VSL | 27 Nov",
@@ -310,14 +310,14 @@
       "campaign_id": "120228953071540036",
       "adset_name": "Programar | CO | 16 | Shopify Woo Triangulacion | Ads 01,02,03 Abril | 20 Junio",
       "adset_id": "120228953071520036",
-      "spend": 634.36,
-      "impressions": 44922,
+      "spend": 634.37,
+      "impressions": 44924,
       "reach": 25492,
       "clicks": 1548,
-      "cpm": 14.121366,
-      "cpc": 0.409793,
-      "ctr": 3.445973,
-      "frequency": 1.7622,
+      "cpm": 14.12096,
+      "cpc": 0.4098,
+      "ctr": 3.44582,
+      "frequency": 1.762278,
       "purchases": 0,
       "leads": 94,
       "initiate_checkout": 0,
